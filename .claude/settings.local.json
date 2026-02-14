@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:www.facebook.com)",
+      "WebFetch(domain:www.newpages.com.mk)",
+      "Bash(python:*)",
+      "WebFetch(domain:www.instagram.com)"
+    ]
+  }
+}

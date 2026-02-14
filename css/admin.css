@@ -1,0 +1,420 @@
+/* ===== Admin Panel Styles ===== */
+:root {
+  --green-dark: #0d5c3f;
+  --green-medium: #1a6b4a;
+  --green-light: #e8f5ee;
+  --green-hover: #0a4a33;
+  --white: #ffffff;
+  --gray-light: #f8f9fa;
+  --gray-medium: #6c757d;
+  --gray-dark: #333333;
+  --text-color: #2d2d2d;
+  --shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 5px 25px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease;
+  --radius: 10px;
+  --orange: #f59e0b;
+  --red: #ef4444;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Archivo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+  background: var(--gray-light);
+  min-height: 100vh;
+}
+
+/* ===== Login Card ===== */
+.login-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-medium) 100%);
+}
+
+.login-card {
+  background: var(--white);
+  padding: 40px 35px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hover);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-card h1 {
+  text-align: center;
+  color: var(--green-dark);
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.login-card .login-subtitle {
+  text-align: center;
+  color: var(--gray-medium);
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+
+.login-card .form-group {
+  margin-bottom: 16px;
+}
+
+.login-card label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gray-dark);
+  margin-bottom: 6px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: var(--transition);
+  outline: none;
+  color: var(--text-color);
+}
+
+.login-card input:focus {
+  border-color: var(--green-medium);
+}
+
+.login-card .btn-login {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: var(--green-dark);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 8px;
+}
+
+.login-card .btn-login:hover {
+  background: var(--green-hover);
+}
+
+.login-error {
+  color: var(--red);
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 12px;
+  min-height: 20px;
+}
+
+/* ===== Admin Header ===== */
+.admin-header {
+  background: var(--green-dark);
+  color: var(--white);
+  padding: 16px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 15px rgba(13, 92, 63, 0.4);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.admin-header h1 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-header .badge {
+  background: var(--orange);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 12px;
+  min-width: 22px;
+  text-align: center;
+}
+
+.admin-header .badge:empty {
+  display: none;
+}
+
+.btn-logout {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-logout:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ===== Tabs ===== */
+.admin-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 30px;
+  background: var(--white);
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.admin-tab {
+  padding: 14px 24px;
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gray-medium);
+  cursor: pointer;
+  transition: var(--transition);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+
+.admin-tab:hover {
+  color: var(--green-dark);
+}
+
+.admin-tab.active {
+  color: var(--green-dark);
+  border-bottom-color: var(--green-dark);
+}
+
+.admin-tab .tab-count {
+  background: var(--gray-light);
+  color: var(--gray-medium);
+  font-size: 0.75rem;
+  padding: 2px 7px;
+  border-radius: 10px;
+  margin-left: 6px;
+}
+
+.admin-tab.active .tab-count {
+  background: var(--green-light);
+  color: var(--green-dark);
+}
+
+/* ===== Dashboard Content ===== */
+.admin-content {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.admin-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--gray-medium);
+  font-size: 1rem;
+}
+
+/* ===== Appointment Cards ===== */
+.appt-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px 24px;
+  margin-bottom: 14px;
+  border-left: 5px solid var(--gray-medium);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  transition: var(--transition);
+}
+
+.appt-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.appt-card--pending {
+  border-left-color: var(--orange);
+}
+
+.appt-card--accepted {
+  border-left-color: var(--green-medium);
+}
+
+.appt-card--rejected {
+  border-left-color: var(--red);
+  opacity: 0.6;
+}
+
+.appt-info {
+  flex: 1;
+}
+
+.appt-info .appt-datetime {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  margin-bottom: 4px;
+}
+
+.appt-info .appt-client {
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.appt-info .appt-phone {
+  font-size: 0.85rem;
+  color: var(--gray-medium);
+}
+
+.appt-info .appt-reason {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  margin-top: 6px;
+  padding: 6px 10px;
+  background: var(--gray-light);
+  border-radius: 6px;
+  font-style: italic;
+}
+
+.appt-status {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.appt-status--pending {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.appt-status--accepted {
+  background: var(--green-light);
+  color: var(--green-dark);
+}
+
+.appt-status--rejected {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.appt-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-accept,
+.btn-reject {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-accept {
+  background: var(--green-dark);
+  color: var(--white);
+}
+
+.btn-accept:hover {
+  background: var(--green-hover);
+}
+
+.btn-reject {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.btn-reject:hover {
+  background: #fecaca;
+}
+
+.btn-cancel {
+  background: var(--gray-light);
+  color: var(--gray-dark);
+  border: 1px solid #e0e0e0;
+}
+
+.btn-cancel:hover {
+  background: #e0e0e0;
+}
+
+/* ===== Hidden utility ===== */
+.hidden {
+  display: none !important;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .admin-header {
+    padding: 14px 16px;
+  }
+
+  .admin-header h1 {
+    font-size: 1.1rem;
+  }
+
+  .admin-tabs {
+    padding: 0 10px;
+    overflow-x: auto;
+  }
+
+  .admin-tab {
+    padding: 12px 16px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  .admin-content {
+    padding: 0 12px;
+    margin: 20px auto;
+  }
+
+  .appt-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .appt-actions {
+    width: 100%;
+  }
+
+  .appt-actions .btn-accept,
+  .appt-actions .btn-reject {
+    flex: 1;
+    text-align: center;
+  }
+
+  .login-card {
+    padding: 30px 20px;
+  }
+}

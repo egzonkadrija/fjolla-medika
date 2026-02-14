@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fjolla Medika - Modern dental clinic in North Macedonia offering quality dental care for the whole family.">
+  <title>Fjolla Medika - Dental Clinic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="#home" class="navbar-logo">
+        <svg class="tooth-icon tooth-anim" viewBox="0 0 64 64" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 4C24.5 4 20 8 17.5 12C15 16 14 20 12.5 26C11 32 9 40 12 48C15 56 19 58 22 56C25 54 26 48 28 44C30 40 31 38 32 38C33 38 34 40 36 44C38 48 39 54 42 56C45 58 49 56 52 48C55 40 53 32 51.5 26C50 20 49 16 46.5 12C44 8 39.5 4 32 4Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M22 18C25 16 29 15 32 15C35 15 39 16 42 18" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+        Fjolla <span>Medika</span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="navbar-menu">
+        <a href="#home" data-i18n="nav_home">Home</a>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#services" data-i18n="nav_services">Services</a>
+        <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+        <a href="#team" data-i18n="nav_team">Our Team</a>
+        <a href="#appointment" data-i18n="nav_appointment">Appointment</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
+
+        <div class="lang-switcher">
+          <button class="lang-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span class="lang-current">EN</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="lang-dropdown">
+            <button data-lang="en">English</button>
+            <button data-lang="sq">Shqip</button>
+            <button data-lang="mk">Македонски</button>
+            <button data-lang="tr">Türkçe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <svg class="tooth-icon-hero tooth-anim" viewBox="0 0 64 64" width="70" height="70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M32 4C24.5 4 20 8 17.5 12C15 16 14 20 12.5 26C11 32 9 40 12 48C15 56 19 58 22 56C25 54 26 48 28 44C30 40 31 38 32 38C33 38 34 40 36 44C38 48 39 54 42 56C45 58 49 56 52 48C55 40 53 32 51.5 26C50 20 49 16 46.5 12C44 8 39.5 4 32 4Z" fill="white" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M22 18C25 16 29 15 32 15C35 15 39 16 42 18" stroke="rgba(13,92,63,0.3)" stroke-width="2.5" stroke-linecap="round"/>
+        <ellipse cx="24" cy="12" rx="4" ry="3" fill="white" opacity="0.4"/>
+      </svg>
+      <h1 data-i18n="hero_title">Your Smile, Our Priority</h1>
+      <p data-i18n="hero_subtitle">Welcome to Fjolla Medika — modern dental care with a gentle touch in the heart of North Macedonia.</p>
+      <a href="#appointment" class="btn-primary" data-i18n="hero_cta">Book an Appointment</a>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section about">
+    <div class="container">
+      <h2 class="section-title fade-in" data-i18n="about_title">About Us</h2>
+
+      <div class="about-content fade-in">
+        <div class="about-text">
+          <p data-i18n="about_text_1">Fjolla Medika is a modern dental clinic dedicated to providing high-quality oral care for patients of all ages.</p>
+          <p data-i18n="about_text_2">We believe that everyone deserves a healthy, beautiful smile.</p>
+          <h3 data-i18n="about_mission_title">Our Mission</h3>
+          <p data-i18n="about_mission_text">To deliver exceptional dental care with compassion, integrity, and excellence.</p>
+        </div>
+        <div class="about-image">
+          <img src="images/about.jpg" alt="Fjolla Medika dental treatments" loading="lazy">
+        </div>
+      </div>
+
+      <div class="about-values fade-in">
+        <h3 data-i18n="about_values_title">Our Values</h3>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-heart"></i></div>
+            <h4 data-i18n="about_value_1">Patient-Centered Care</h4>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-star"></i></div>
+            <h4 data-i18n="about_value_2">Professional Excellence</h4>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-gear"></i></div>
+            <h4 data-i18n="about_value_3">Modern Technology</h4>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-house-chimney"></i></div>
+            <h4 data-i18n="about_value_4">Warm Environment</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services" class="section services">
+    <div class="container">
+      <h2 class="section-title fade-in" data-i18n="services_title">Our Services</h2>
+
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <div class="service-icon"><i class="fa-solid fa-tooth"></i></div>
+          <h3 data-i18n="service_1_title">General Dentistry</h3>
+          <p data-i18n="service_1_desc">Comprehensive check-ups, cleanings, fillings, and preventive care.</p>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon"><i class="fa-solid fa-teeth"></i></div>
+          <h3 data-i18n="service_2_title">Dental Implants</h3>
+          <p data-i18n="service_2_desc">Permanent tooth replacement solutions.</p>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+          <h3 data-i18n="service_3_title">Orthodontics</h3>
+          <p data-i18n="service_3_desc">Braces and aligners to straighten teeth.</p>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <h3 data-i18n="service_4_title">Teeth Whitening</h3>
+          <p data-i18n="service_4_desc">Professional whitening treatments.</p>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon"><i class="fa-solid fa-child"></i></div>
+          <h3 data-i18n="service_5_title">Pediatric Dentistry</h3>
+          <p data-i18n="service_5_desc">Gentle dental care for children.</p>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon"><i class="fa-solid fa-gem"></i></div>
+          <h3 data-i18n="service_6_title">Cosmetic Dentistry</h3>
+          <p data-i18n="service_6_desc">Veneers, bonding, and smile makeovers.</p>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon"><i class="fa-solid fa-syringe"></i></div>
+          <h3 data-i18n="service_7_title">Oral Surgery</h3>
+          <p data-i18n="service_7_desc">Tooth extractions and surgical procedures.</p>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon"><i class="fa-solid fa-bullseye"></i></div>
+          <h3 data-i18n="service_8_title">Endodontics</h3>
+          <p data-i18n="service_8_desc">Root canal treatments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY (Before & After) ===== -->
+  <section id="gallery" class="section gallery">
+    <div class="container">
+      <h2 class="section-title fade-in" data-i18n="gallery_title">Before & After</h2>
+      <p class="section-subtitle fade-in" data-i18n="gallery_subtitle">See the transformations our patients have experienced. Real results from real people.</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-card fade-in">
+          <img src="images/before-after-1.jpg" alt="Dental transformation 1" loading="lazy">
+          <div class="gallery-label">
+            <span class="label-before" data-i18n="gallery_before">Before</span>
+            <span class="label-after" data-i18n="gallery_after">After</span>
+          </div>
+        </div>
+
+        <div class="gallery-card fade-in">
+          <img src="images/before-after-2.jpg" alt="Dental transformation 2" loading="lazy">
+          <div class="gallery-label">
+            <span class="label-before" data-i18n="gallery_before">Before</span>
+            <span class="label-after" data-i18n="gallery_after">After</span>
+          </div>
+        </div>
+
+        <div class="gallery-card fade-in">
+          <img src="images/before-after-3.jpg" alt="Dental transformation 3" loading="lazy">
+          <div class="gallery-label">
+            <span class="label-before" data-i18n="gallery_before">Before</span>
+            <span class="label-after" data-i18n="gallery_after">After</span>
+          </div>
+        </div>
+
+        <div class="gallery-card fade-in">
+          <img src="images/before-after-4.jpg" alt="Dental transformation 4" loading="lazy">
+          <div class="gallery-label">
+            <span class="label-before" data-i18n="gallery_before">Before</span>
+            <span class="label-after" data-i18n="gallery_after">After</span>
+          </div>
+        </div>
+
+        <div class="gallery-card fade-in">
+          <img src="images/before-after-5.jpg" alt="Dental transformation 5" loading="lazy">
+          <div class="gallery-label">
+            <span class="label-before" data-i18n="gallery_before">Before</span>
+            <span class="label-after" data-i18n="gallery_after">After</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEAM ===== -->
+  <section id="team" class="section team">
+    <div class="container">
+      <h2 class="section-title fade-in" data-i18n="team_title">Our Team</h2>
+
+      <div class="team-grid">
+        <div class="team-card fade-in">
+          <div class="team-photo"><i class="fa-solid fa-user-doctor"></i></div>
+          <div class="team-info">
+            <h3>Dr. Arben Selimi</h3>
+            <p data-i18n="team_role_1">Lead Dentist</p>
+            <p class="experience">15+ <span data-i18n="team_experience">years of experience</span></p>
+          </div>
+        </div>
+
+        <div class="team-card fade-in">
+          <div class="team-photo"><i class="fa-solid fa-user-doctor"></i></div>
+          <div class="team-info">
+            <h3>Dr. Fjolla Ismaili</h3>
+            <p data-i18n="team_role_2">Orthodontist</p>
+            <p class="experience">10+ <span data-i18n="team_experience">years of experience</span></p>
+          </div>
+        </div>
+
+        <div class="team-card fade-in">
+          <div class="team-photo"><i class="fa-solid fa-user-doctor"></i></div>
+          <div class="team-info">
+            <h3>Dr. Burim Ahmeti</h3>
+            <p data-i18n="team_role_3">Dental Surgeon</p>
+            <p class="experience">12+ <span data-i18n="team_experience">years of experience</span></p>
+          </div>
+        </div>
+
+        <div class="team-card fade-in">
+          <div class="team-photo"><i class="fa-solid fa-user-doctor"></i></div>
+          <div class="team-info">
+            <h3>Dr. Elira Bajrami</h3>
+            <p data-i18n="team_role_4">Pediatric Dentist</p>
+            <p class="experience">8+ <span data-i18n="team_experience">years of experience</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== APPOINTMENT ===== -->
+  <section id="appointment" class="section appointment">
+    <div class="container">
+      <h2 class="section-title fade-in" data-i18n="appointment_title">Book an Appointment</h2>
+      <p class="section-subtitle fade-in" data-i18n="appointment_subtitle">Schedule your visit today. Fill out the form and we'll get back to you shortly.</p>
+
+      <div class="booking-wrapper fade-in">
+        <!-- Step 1: Calendar -->
+        <div class="booking-step" id="booking-step-date">
+          <h3 class="booking-step-title" data-i18n="booking_select_date">Select a Date</h3>
+          <div class="booking-calendar">
+            <div class="cal-header">
+              <button class="cal-nav" id="cal-prev" aria-label="Previous month">&#x2039;</button>
+              <span class="cal-month-year" id="cal-month-year"></span>
+              <button class="cal-nav" id="cal-next" aria-label="Next month">&#x203A;</button>
+            </div>
+            <div class="cal-weekdays" id="cal-weekdays"></div>
+            <div class="cal-days" id="cal-days"></div>
+          </div>
+          <div class="cal-legend">
+            <span class="legend-item"><span class="legend-dot legend-available"></span> <span data-i18n="booking_available">Available</span></span>
+            <span class="legend-item"><span class="legend-dot legend-closed"></span> <span data-i18n="booking_sun_closed">Closed on Sundays</span></span>
+          </div>
+        </div>
+
+        <!-- Step 2: Time Slots -->
+        <div class="booking-step hidden" id="booking-step-time">
+          <h3 class="booking-step-title" data-i18n="booking_select_time">Select a Time</h3>
+          <div class="booking-summary-chip" id="selected-date-chip"></div>
+          <div class="booking-slots" id="booking-slots"></div>
+          <div class="slots-legend">
+            <span class="legend-item"><span class="legend-dot legend-available"></span> <span data-i18n="booking_available">Available</span></span>
+            <span class="legend-item"><span class="legend-dot legend-pending"></span> <span data-i18n="booking_pending">Pending</span></span>
+            <span class="legend-item"><span class="legend-dot legend-booked"></span> <span data-i18n="booking_booked">Booked</span></span>
+          </div>
+          <button class="booking-back-btn" id="back-to-calendar">&#x2039; <span data-i18n="booking_select_date">Select a Date</span></button>
+        </div>
+
+        <!-- Step 3: Form -->
+        <div class="booking-step hidden" id="booking-step-form">
+          <h3 class="booking-step-title" data-i18n="booking_your_details">Your Details</h3>
+          <div class="booking-summary-chip" id="selected-datetime-chip"></div>
+          <form id="appointment-form" class="appointment-form-inner">
+            <div class="form-group">
+              <label data-i18n="form_name">Full Name</label>
+              <input type="text" id="booking-name" data-i18n="form_name" required>
+            </div>
+            <div class="form-group">
+              <label data-i18n="form_phone">Phone Number</label>
+              <input type="tel" id="booking-phone" data-i18n="form_phone" required>
+            </div>
+            <div class="form-group">
+              <label data-i18n="form_reason">Reason for Visit</label>
+              <textarea id="booking-reason" data-i18n="form_reason" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn-submit" data-i18n="booking_confirm">Confirm Appointment</button>
+          </form>
+          <button class="booking-back-btn" id="back-to-slots">&#x2039; <span data-i18n="booking_select_time">Select a Time</span></button>
+        </div>
+
+        <!-- Success -->
+        <div id="form-success" class="form-success" data-i18n="form_success">
+          Thank you! Your appointment request has been submitted.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2 class="section-title fade-in" data-i18n="contact_title">Contact Us</h2>
+
+      <div class="contact-content fade-in">
+        <div class="contact-info-list">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-clock"></i></div>
+            <div class="contact-details">
+              <h4 data-i18n="contact_hours_label">Working Hours</h4>
+              <p data-i18n="contact_hours_weekday">Monday - Friday: 08:00 - 20:00</p>
+              <p data-i18n="contact_hours_saturday">Saturday: 09:00 - 15:00</p>
+              <p data-i18n="contact_hours_sunday">Sunday: Closed</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <a href="tel:+38971586769" class="contact-btn">
+              <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+              <span data-i18n="contact_call_btn">Call Now</span>
+            </a>
+          </div>
+
+          <div class="contact-item">
+            <a href="mailto:info@fjollamedika.mk" class="contact-btn">
+              <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+              <span data-i18n="contact_email_btn">Contact via Email</span>
+            </a>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="contact-details">
+              <h4 data-i18n="contact_address_label">Address</h4>
+              <p data-i18n="contact_address">Georgi Pophristov 4-1/8, Skopje, North Macedonia</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-map">
+          <iframe
+            src="https://maps.google.com/maps?q=42.01619,21.4327&t=&z=17&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="100%"
+            style="border:0; min-height:400px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="#home" class="navbar-logo" style="color: white; font-size: 1.5rem;">Fjolla <span style="font-weight: 400;">Medika</span></a>
+          <p data-i18n="footer_description">Fjolla Medika — Your trusted dental clinic in North Macedonia.</p>
+        </div>
+
+        <div class="footer-links">
+          <h4 data-i18n="footer_quick_links">Quick Links</h4>
+          <a href="#home" data-i18n="nav_home">Home</a>
+          <a href="#about" data-i18n="nav_about">About</a>
+          <a href="#services" data-i18n="nav_services">Services</a>
+          <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+          <a href="#team" data-i18n="nav_team">Our Team</a>
+          <a href="#appointment" data-i18n="nav_appointment">Appointment</a>
+        </div>
+
+        <div class="footer-contact-info">
+          <h4 data-i18n="footer_contact">Contact Info</h4>
+          <a href="tel:+38971586769" class="footer-contact-link" data-i18n="contact_call_btn">Call Now</a>
+          <a href="mailto:info@fjollamedika.mk" class="footer-contact-link" data-i18n="contact_email_btn">Contact via Email</a>
+        </div>
+
+        <div>
+          <h4 data-i18n="footer_follow">Follow Us</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Fjolla Medika. <span data-i18n="footer_rights">All rights reserved.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

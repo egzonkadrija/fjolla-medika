@@ -1379,6 +1379,10 @@ img {
 }
 
 @media (max-width: 768px) {
+  .footer {
+    padding-bottom: 120px;
+  }
+
   .menu-toggle {
     display: flex;
   }

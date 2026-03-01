@@ -5,6 +5,13 @@ import {
 import {
   collection, onSnapshot, doc, updateDoc, deleteDoc, orderBy, query
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { DOCTORS } from "./doctors.js";
+
+// --- Helpers ---
+function getDoctorName(doctorId) {
+  const doc = DOCTORS.find(d => d.id === doctorId);
+  return doc ? doc.name : doctorId || "—";
+}
 
 // --- DOM refs ---
 const loginScreen = document.getElementById('login-screen');
@@ -13,11 +20,26 @@ const loginForm = document.getElementById('login-form');
 const loginError = document.getElementById('login-error');
 const listEl = document.getElementById('appointments-list');
 const pendingBadge = document.getElementById('pending-badge');
+const doctorFilterEl = document.getElementById('doctor-filter');
 
 let currentFilter = 'pending';
+let currentDoctorFilter = 'all';
 let allAppointments = [];
 let prevPendingCount = 0;
 let unsubFirestore = null;
+
+// Populate doctor filter dropdown
+DOCTORS.forEach(d => {
+  const opt = document.createElement('option');
+  opt.value = d.id;
+  opt.textContent = d.name;
+  doctorFilterEl.appendChild(opt);
+});
+
+doctorFilterEl.addEventListener('change', () => {
+  currentDoctorFilter = doctorFilterEl.value;
+  renderAppointments();
+});
 
 // --- Auth State ---
 onAuthStateChanged(auth, (user) => {
@@ -111,8 +133,15 @@ function updateCounts() {
 // --- Render ---
 function renderAppointments() {
   let filtered = allAppointments;
+
+  // Status filter
   if (currentFilter !== 'all') {
-    filtered = allAppointments.filter(a => a.status === currentFilter);
+    filtered = filtered.filter(a => a.status === currentFilter);
+  }
+
+  // Doctor filter
+  if (currentDoctorFilter !== 'all') {
+    filtered = filtered.filter(a => a.doctorId === currentDoctorFilter);
   }
 
   if (filtered.length === 0) {
@@ -122,9 +151,11 @@ function renderAppointments() {
 
   listEl.innerHTML = filtered.map(a => {
     const isPending = a.status === 'pending';
+    const doctorName = getDoctorName(a.doctorId);
     return `
       <div class="appt-card appt-card--${a.status}">
         <div class="appt-info">
+          <div class="appt-doctor">${escapeHtml(doctorName)}</div>
           <div class="appt-datetime">${a.date} &mdash; ${a.time}</div>
           <div class="appt-client">${escapeHtml(a.name)}</div>
           <div class="appt-phone">${escapeHtml(a.phone)}</div>

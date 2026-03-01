@@ -317,7 +317,7 @@ img {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-medium) 100%);
+  background: linear-gradient(135deg, rgba(13,92,63,0.85) 0%, rgba(34,139,94,0.85) 100%), url('../images/hero-dental-tools.png') center/cover no-repeat;
   color: var(--white);
   position: relative;
   overflow: hidden;
@@ -428,10 +428,11 @@ img {
 
 .value-card {
   text-align: center;
-  padding: 30px 20px;
+  padding: 0;
   border-radius: var(--radius);
   background: var(--gray-light);
   transition: var(--transition);
+  overflow: hidden;
 }
 
 .value-card:hover {
@@ -439,10 +440,27 @@ img {
   box-shadow: var(--shadow);
 }
 
+.value-img {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+}
+
+.value-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.value-card:hover .value-img img {
+  transform: scale(1.05);
+}
+
 .value-icon {
   width: 60px;
   height: 60px;
-  margin: 0 auto 15px;
+  margin: 20px auto 12px;
   background: var(--green-light);
   border-radius: 50%;
   display: flex;
@@ -455,6 +473,7 @@ img {
 .value-card h4 {
   color: var(--green-dark);
   font-size: 1rem;
+  padding: 0 15px 20px;
 }
 
 /* ===== Services ===== */
@@ -470,11 +489,12 @@ img {
 
 .service-card {
   background: var(--white);
-  padding: 35px 25px;
+  padding: 0;
   border-radius: var(--radius);
   text-align: center;
   transition: var(--transition);
   border: 1px solid transparent;
+  overflow: hidden;
 }
 
 .service-card:hover {
@@ -483,10 +503,27 @@ img {
   border-color: var(--green-light);
 }
 
+.service-img {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+}
+
+.service-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover .service-img img {
+  transform: scale(1.05);
+}
+
 .service-icon {
   width: 70px;
   height: 70px;
-  margin: 0 auto 20px;
+  margin: 20px auto 15px;
   background: var(--green-light);
   border-radius: 50%;
   display: flex;
@@ -506,12 +543,14 @@ img {
   font-size: 1.15rem;
   color: var(--green-dark);
   margin-bottom: 12px;
+  padding: 0 20px;
 }
 
 .service-card p {
   color: var(--gray-medium);
   font-size: 0.92rem;
   line-height: 1.6;
+  padding: 0 20px 25px;
 }
 
 /* ===== Gallery (Before & After) ===== */
@@ -606,13 +645,19 @@ img {
 .team-photo {
   width: 100%;
   height: 280px;
-  background: var(--green-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 4rem;
-  color: var(--green-dark);
-  opacity: 0.3;
+  overflow: hidden;
+}
+
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover .team-photo img {
+  transform: scale(1.05);
 }
 
 .team-info {
@@ -634,6 +679,101 @@ img {
   font-size: 0.85rem;
   color: var(--green-medium);
   margin-top: 5px;
+}
+
+/* ===== Book Now Button on Team Cards ===== */
+.btn-book-doctor {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 22px;
+  background: var(--green-dark);
+  color: var(--white);
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn-book-doctor:hover {
+  background: var(--green-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(13, 92, 63, 0.3);
+}
+
+/* ===== Doctor Select Grid (Booking Step 0) ===== */
+.doctor-select-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.doctor-select-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 20px 10px 10px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--green-dark);
+  color: var(--white);
+}
+
+.doctor-select-card:hover {
+  background: var(--green-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(13, 92, 63, 0.3);
+}
+
+.doctor-select-card img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: var(--transition);
+}
+
+.doctor-select-card:hover img {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.doctor-select-card .doctor-select-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.doctor-select-card .doctor-select-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.3;
+  transition: var(--transition);
+}
+
+.doctor-select-card .doctor-select-role {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 1px;
+  transition: var(--transition);
+}
+
+.doctor-select-card .doctor-select-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--white);
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.doctor-select-card:hover .doctor-select-arrow {
+  transform: translateX(3px);
 }
 
 /* ===== Appointment ===== */
@@ -660,6 +800,19 @@ img {
   margin-bottom: 20px;
   text-align: center;
   font-weight: 600;
+}
+
+#booking-step-doctor .booking-step-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+#booking-step-doctor .booking-step-subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--gray-medium);
+  margin-bottom: 22px;
 }
 
 /* Calendar */
@@ -883,19 +1036,23 @@ img {
 
 /* Back Button */
 .booking-back-btn {
-  display: block;
+  display: inline-block;
   margin-top: 15px;
-  background: none;
+  background: var(--green-dark);
   border: none;
-  color: var(--green-medium);
-  font-size: 0.9rem;
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
-  padding: 5px 0;
+  padding: 10px 24px;
+  border-radius: 50px;
 }
 
 .booking-back-btn:hover {
-  color: var(--green-dark);
+  background: var(--green-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(13, 92, 63, 0.3);
 }
 
 /* Form inner (within booking) */
@@ -1298,5 +1455,122 @@ img {
 
   .hero-content h1 {
     font-size: 2rem;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Testimonials ===== */
+.testimonials {
+  background: var(--gray-light);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.testimonial-card {
+  background: var(--white);
+  padding: 30px 28px;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--green-dark);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.testimonial-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 16px;
+  color: #f59e0b;
+  font-size: 0.95rem;
+}
+
+.testimonial-text {
+  font-size: 0.95rem;
+  color: var(--gray-medium);
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 18px;
+}
+
+.testimonial-author {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--green-dark);
+}
+
+/* ===== WhatsApp Float ===== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background: #25D366;
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  z-index: 999;
+  transition: var(--transition);
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+  color: var(--white);
+}
+
+/* ===== Back to Top ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 90px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  background: var(--green-dark);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition);
+  box-shadow: 0 3px 12px rgba(13, 92, 63, 0.3);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  background: var(--green-hover);
+  transform: translateY(-3px);
+}
+
+/* ===== Responsive: Testimonials ===== */
+@media (max-width: 1024px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

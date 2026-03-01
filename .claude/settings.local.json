@@ -5,7 +5,11 @@
       "WebFetch(domain:www.facebook.com)",
       "WebFetch(domain:www.newpages.com.mk)",
       "Bash(python:*)",
-      "WebFetch(domain:www.instagram.com)"
+      "WebFetch(domain:www.instagram.com)",
+      "WebFetch(domain:www.pexels.com)",
+      "Bash(curl:*)",
+      "Bash(ls:*)",
+      "WebFetch(domain:unsplash.com)"
     ]
   }
 }

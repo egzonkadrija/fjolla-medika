@@ -2,7 +2,6 @@ import { subscribeToDateSlots, submitAppointment } from "./booking-firebase.js";
 import { DOCTORS } from "./doctors.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // Initialize i18n
   await I18n.init();
 
   // --- Mobile Menu Toggle ---
@@ -14,7 +13,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     navMenu.classList.toggle('open');
   });
 
-  // Close mobile menu when a nav link is clicked
   navMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       menuToggle.classList.remove('active');
@@ -44,44 +42,29 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  // --- Active Nav Link on Scroll ---
-  const sections = document.querySelectorAll('.section[id]');
-  const navLinks = document.querySelectorAll('.navbar-menu a[href^="#"]');
+  // --- Navbar background on scroll ---
+  const navbar = document.querySelector('.navbar');
 
-  function updateActiveNav() {
-    const scrollY = window.scrollY + 100;
+  // --- Back to Top Button ---
+  const backToTop = document.querySelector('.back-to-top');
 
-    sections.forEach(section => {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      const id = section.getAttribute('id');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.style.boxShadow = '0 2px 20px rgba(13,92,63,0.5)';
+    } else {
+      navbar.style.boxShadow = '0 2px 15px rgba(13,92,63,0.4)';
+    }
 
-      if (scrollY >= top && scrollY < top + height) {
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${id}`) {
-            link.classList.add('active');
-          }
-        });
-      }
-    });
-  }
+    if (window.scrollY > 400) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  });
 
-  window.addEventListener('scroll', updateActiveNav);
-  updateActiveNav();
-
-  // --- Scroll Fade-In Animation ---
-  const fadeElements = document.querySelectorAll('.fade-in');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  fadeElements.forEach(el => observer.observe(el));
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
   // --- Booking Calendar ---
   const BookingCalendar = {
@@ -90,19 +73,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     selectedDoctor: null,
     selectedDate: null,
     selectedSlot: null,
-    unsubscribe: null,          // Firestore listener cleanup
-    currentSlotStatus: new Map(), // time -> "pending" | "accepted"
+    unsubscribe: null,
+    currentSlotStatus: new Map(),
 
     init() {
       this.renderDoctorGrid();
       this.renderCalendar();
       this.bindEvents();
-      this.bindDoctorBookButtons();
       I18n.onChangeCallbacks.push(() => {
         this.renderDoctorGrid();
         this.renderCalendar();
         if (this.selectedDate) this.renderSlots();
       });
+
+      // Check for pre-selected doctor from URL param
+      const params = new URLSearchParams(window.location.search);
+      const doctorId = params.get('doctor');
+      if (doctorId && DOCTORS.find(d => d.id === doctorId)) {
+        this.selectDoctor(doctorId);
+      }
     },
 
     renderDoctorGrid() {
@@ -133,26 +122,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       this.selectedSlot = null;
       this.cleanupListener();
 
-      // Show doctor name in chip
       const chip = document.getElementById('selected-doctor-chip');
       chip.textContent = `${doc.name} — ${I18n.t(doc.roleKey)}`;
 
       this.renderCalendar();
       this.showStep('date');
-    },
-
-    bindDoctorBookButtons() {
-      document.querySelectorAll('.team-card[data-doctor-id]').forEach(card => {
-        const btn = card.querySelector('.btn-book-doctor');
-        if (!btn) return;
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const doctorId = card.dataset.doctorId;
-          this.selectDoctor(doctorId);
-          // Scroll to appointment section
-          document.getElementById('appointment').scrollIntoView({ behavior: 'smooth' });
-        });
-      });
     },
 
     bindEvents() {
@@ -203,7 +177,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           const dateStr = this.toFirestoreDateStr(this.selectedDate);
           await submitAppointment(this.selectedDoctor.id, dateStr, this.selectedSlot, name, phone, reason);
 
-          // Show success
           this.cleanupListener();
           this.showStep('none');
           const successMsg = document.getElementById('form-success');
@@ -245,24 +218,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderCalendar() {
       const t = (k) => I18n.t(k);
 
-      // Month/year header
       document.getElementById('cal-month-year').textContent =
         t(`month_${this.currentMonth + 1}`) + ' ' + this.currentYear;
 
-      // Weekday headers
       const weekdaysEl = document.getElementById('cal-weekdays');
       const dayKeys = ['day_mon', 'day_tue', 'day_wed', 'day_thu', 'day_fri', 'day_sat', 'day_sun'];
       weekdaysEl.innerHTML = dayKeys.map(k =>
         `<span class="cal-weekday">${t(k)}</span>`
       ).join('');
 
-      // Days grid
       const daysEl = document.getElementById('cal-days');
       const firstDay = new Date(this.currentYear, this.currentMonth, 1);
       const lastDay = new Date(this.currentYear, this.currentMonth + 1, 0);
       const totalDays = lastDay.getDate();
 
-      // getDay() returns 0=Sun. We want Mon=0, so shift.
       let startIdx = firstDay.getDay() - 1;
       if (startIdx < 0) startIdx = 6;
 
@@ -271,14 +240,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       let html = '';
 
-      // Empty cells before first day
       for (let i = 0; i < startIdx; i++) {
         html += '<span class="cal-day cal-day--empty"></span>';
       }
 
       for (let d = 1; d <= totalDays; d++) {
         const date = new Date(this.currentYear, this.currentMonth, d);
-        const dayOfWeek = date.getDay(); // 0=Sun
+        const dayOfWeek = date.getDay();
         const isPast = date < today;
         const isSunday = dayOfWeek === 0;
         const isToday = date.getTime() === today.getTime();
@@ -298,7 +266,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       daysEl.innerHTML = html;
 
-      // Attach click handlers
       daysEl.querySelectorAll('.cal-day:not(.cal-day--disabled):not(.cal-day--empty)').forEach(el => {
         el.addEventListener('click', () => {
           const day = parseInt(el.dataset.day);
@@ -306,7 +273,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
       });
 
-      // Disable prev button if we're at current month
       const prevBtn = document.getElementById('cal-prev');
       const now = new Date();
       if (this.currentYear === now.getFullYear() && this.currentMonth === now.getMonth()) {
@@ -323,10 +289,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       this.selectedSlot = null;
       this.renderCalendar();
 
-      // Clean up previous Firestore listener
       this.cleanupListener();
 
-      // Subscribe to real-time slot data for the selected doctor + date
       const dateStr = this.toFirestoreDateStr(this.selectedDate);
       this.unsubscribe = subscribeToDateSlots(this.selectedDoctor.id, dateStr, (slotStatus) => {
         this.currentSlotStatus = slotStatus;
@@ -347,9 +311,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       const dayOfWeek = date.getDay();
       let startHour, endHour;
 
-      if (dayOfWeek === 6) { // Saturday
+      if (dayOfWeek === 6) {
         startHour = 9; endHour = 14;
-      } else { // Mon-Fri
+      } else {
         startHour = 8; endHour = 19;
       }
 
@@ -370,7 +334,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const times = this.getTimeSlots(this.selectedDate);
 
       slotsEl.innerHTML = times.map(time => {
-        const status = this.currentSlotStatus.get(time); // "pending" | "accepted" | undefined
+        const status = this.currentSlotStatus.get(time);
         let cls = 'slot';
         let disabled = false;
 
@@ -397,12 +361,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     selectSlot(time) {
       this.selectedSlot = time;
 
-      // Highlight selected
       document.querySelectorAll('#booking-slots .slot').forEach(el => {
         el.classList.toggle('slot--selected', el.dataset.time === time);
       });
 
-      // Show form with summary (doctor + date + time)
       const chipEl = document.getElementById('selected-datetime-chip');
       chipEl.textContent = `${this.selectedDoctor.name} — ${this.formatDate(this.selectedDate)} — ${time}`;
       this.showStep('form');
@@ -422,28 +384,4 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
 
   BookingCalendar.init();
-
-  // --- Navbar background on scroll ---
-  const navbar = document.querySelector('.navbar');
-
-  // --- Back to Top Button ---
-  const backToTop = document.querySelector('.back-to-top');
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar.style.boxShadow = '0 2px 20px rgba(13,92,63,0.5)';
-    } else {
-      navbar.style.boxShadow = '0 2px 15px rgba(13,92,63,0.4)';
-    }
-
-    if (window.scrollY > 400) {
-      backToTop.classList.add('visible');
-    } else {
-      backToTop.classList.remove('visible');
-    }
-  });
-
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
 });

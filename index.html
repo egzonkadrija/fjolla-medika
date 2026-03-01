@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Fjolla Medika - Modern dental clinic in North Macedonia offering quality dental care for the whole family.">
   <title>Fjolla Medika - Dental Clinic</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -34,8 +35,8 @@
         <a href="#home" data-i18n="nav_home">Home</a>
         <a href="#about" data-i18n="nav_about">About</a>
         <a href="#services" data-i18n="nav_services">Services</a>
-        <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
-        <a href="#team" data-i18n="nav_team">Our Team</a>
+        <a href="gallery.html" data-i18n="nav_gallery">Gallery</a>
+        <a href="team.html" data-i18n="nav_team">Our Team</a>
         <a href="#appointment" data-i18n="nav_appointment">Appointment</a>
         <a href="#contact" data-i18n="nav_contact">Contact</a>
 
@@ -96,19 +97,28 @@
         <h3 data-i18n="about_values_title">Our Values</h3>
         <div class="values-grid">
           <div class="value-card">
-            <div class="value-icon"><i class="fa-solid fa-heart"></i></div>
+            <div class="value-img"><img src="images/value-patient-care.jpg" alt="Patient-Centered Care" loading="lazy"></div>
+            <div class="value-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
             <h4 data-i18n="about_value_1">Patient-Centered Care</h4>
           </div>
           <div class="value-card">
-            <div class="value-icon"><i class="fa-solid fa-star"></i></div>
+            <div class="value-img"><img src="images/value-excellence.jpg" alt="Professional Excellence" loading="lazy"></div>
+            <div class="value-icon"><i class="fa-solid fa-trophy"></i></div>
             <h4 data-i18n="about_value_2">Professional Excellence</h4>
           </div>
           <div class="value-card">
-            <div class="value-icon"><i class="fa-solid fa-gear"></i></div>
+            <div class="value-img"><img src="images/value-technology.jpg" alt="Modern Technology" loading="lazy"></div>
+            <div class="value-icon"><i class="fa-solid fa-microchip"></i></div>
             <h4 data-i18n="about_value_3">Modern Technology</h4>
           </div>
           <div class="value-card">
-            <div class="value-icon"><i class="fa-solid fa-house-chimney"></i></div>
+            <div class="value-img"><img src="images/value-environment.jpg" alt="Warm Environment" loading="lazy"></div>
+            <div class="value-icon">
+              <span class="fa-stack" style="font-size: 0.75em;">
+                <i class="fa-solid fa-house fa-stack-2x"></i>
+                <i class="fa-solid fa-heart fa-stack-1x" style="color: var(--green-light); font-size: 0.5em; margin-top: 2px;"></i>
+              </span>
+            </div>
             <h4 data-i18n="about_value_4">Warm Environment</h4>
           </div>
         </div>
@@ -123,49 +133,63 @@
 
       <div class="services-grid">
         <div class="service-card fade-in">
+          <div class="service-img"><img src="images/service-general.jpg" alt="General Dentistry" loading="lazy"></div>
           <div class="service-icon"><i class="fa-solid fa-tooth"></i></div>
           <h3 data-i18n="service_1_title">General Dentistry</h3>
           <p data-i18n="service_1_desc">Comprehensive check-ups, cleanings, fillings, and preventive care.</p>
         </div>
 
         <div class="service-card fade-in">
-          <div class="service-icon"><i class="fa-solid fa-teeth"></i></div>
+          <div class="service-img"><img src="images/service-implants.jpg" alt="Dental Implants" loading="lazy"></div>
+          <div class="service-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
           <h3 data-i18n="service_2_title">Dental Implants</h3>
           <p data-i18n="service_2_desc">Permanent tooth replacement solutions.</p>
         </div>
 
         <div class="service-card fade-in">
-          <div class="service-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+          <div class="service-img"><img src="images/service-orthodontics.jpg" alt="Orthodontics" loading="lazy"></div>
+          <div class="service-icon"><i class="fa-solid fa-face-smile-beam"></i></div>
           <h3 data-i18n="service_3_title">Orthodontics</h3>
           <p data-i18n="service_3_desc">Braces and aligners to straighten teeth.</p>
         </div>
 
         <div class="service-card fade-in">
-          <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <div class="service-img"><img src="images/service-whitening.jpg" alt="Teeth Whitening" loading="lazy"></div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" width="38" height="38" fill="currentColor"><path d="M12 2l1.09 3.26L16.36 6.5l-3.27 1.09L12 10.86l-1.09-3.27L7.64 6.5l3.27-1.24L12 2zm6.5 7l.72 2.17L21.39 12l-2.17.83L18.5 15l-.72-2.17L15.61 12l2.17-.83L18.5 9zM7 14l.72 2.17L9.89 17l-2.17.83L7 20l-.72-2.17L4.11 17l2.17-.83L7 14z"/></svg>
+          </div>
           <h3 data-i18n="service_4_title">Teeth Whitening</h3>
           <p data-i18n="service_4_desc">Professional whitening treatments.</p>
         </div>
 
         <div class="service-card fade-in">
-          <div class="service-icon"><i class="fa-solid fa-child"></i></div>
+          <div class="service-img"><img src="images/service-pediatric.jpg" alt="Pediatric Dentistry" loading="lazy"></div>
+          <div class="service-icon"><i class="fa-solid fa-child-reaching"></i></div>
           <h3 data-i18n="service_5_title">Pediatric Dentistry</h3>
           <p data-i18n="service_5_desc">Gentle dental care for children.</p>
         </div>
 
         <div class="service-card fade-in">
-          <div class="service-icon"><i class="fa-solid fa-gem"></i></div>
+          <div class="service-img"><img src="images/service-cosmetic.jpg" alt="Cosmetic Dentistry" loading="lazy"></div>
+          <div class="service-icon"><i class="fa-solid fa-face-grin-stars"></i></div>
           <h3 data-i18n="service_6_title">Cosmetic Dentistry</h3>
           <p data-i18n="service_6_desc">Veneers, bonding, and smile makeovers.</p>
         </div>
 
         <div class="service-card fade-in">
-          <div class="service-icon"><i class="fa-solid fa-syringe"></i></div>
+          <div class="service-img"><img src="images/service-surgery.jpg" alt="Oral Surgery" loading="lazy"></div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor"><path d="M20.71 3.29a1 1 0 0 0-1.42 0L8 14.59l-1.29-1.3a1 1 0 0 0-1.42 1.42l2 2a1 1 0 0 0 1.42 0L20.71 4.71a1 1 0 0 0 0-1.42zM7 16l-3.15 3.15a2 2 0 0 0 0 2.83 2 2 0 0 0 2.83 0L9.83 18.83 7 16z"/></svg>
+          </div>
           <h3 data-i18n="service_7_title">Oral Surgery</h3>
           <p data-i18n="service_7_desc">Tooth extractions and surgical procedures.</p>
         </div>
 
         <div class="service-card fade-in">
-          <div class="service-icon"><i class="fa-solid fa-bullseye"></i></div>
+          <div class="service-img"><img src="images/service-endodontics.jpg" alt="Endodontics" loading="lazy"></div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor"><path d="M12 2C10.3 2 9 3.5 9 5.5v4c0 .8-.3 1.5-.8 2.1-.5.6-.8 1.3-.7 2.1.1 1.2.9 2.2 2 2.7V22h1.5v-5.6c.6.1 1.2.1 1.8 0V22H14.5v-5.6c1.1-.5 1.9-1.5 2-2.7.1-.8-.2-1.5-.7-2.1-.5-.6-.8-1.3-.8-2.1v-4C15 3.5 13.7 2 12 2zm-1.5 3.5c0-1.1.7-2 1.5-2s1.5.9 1.5 2v4c0 1.1.4 2.1 1.1 2.9.3.4.5.8.4 1.3-.1.8-.7 1.4-1.5 1.7-.6.2-1.4.2-2 0-.8-.3-1.4-.9-1.5-1.7-.1-.5.1-.9.4-1.3.7-.8 1.1-1.8 1.1-2.9v-4z"/></svg>
+          </div>
           <h3 data-i18n="service_8_title">Endodontics</h3>
           <p data-i18n="service_8_desc">Root canal treatments.</p>
         </div>
@@ -208,45 +232,82 @@
     </div>
   </section>
 
+  <!-- ===== TESTIMONIALS ===== -->
+  <section id="testimonials" class="section testimonials">
+    <div class="container">
+      <h2 class="section-title fade-in" data-i18n="testimonials_title">What Our Patients Say</h2>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testimonial-text" data-i18n="testimonial_1_text">"The best dental experience I've ever had. The team was professional, gentle, and made me feel completely at ease. My smile has never looked better!"</p>
+          <p class="testimonial-author" data-i18n="testimonial_1_name">— Arta M.</p>
+        </div>
+
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testimonial-text" data-i18n="testimonial_2_text">"I was terrified of dentists, but Dr. Selimi and his team changed that completely. They are patient, kind, and truly care about their patients. Highly recommended!"</p>
+          <p class="testimonial-author" data-i18n="testimonial_2_name">— Besart K.</p>
+        </div>
+
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testimonial-text" data-i18n="testimonial_3_text">"My children love coming here! Dr. Bajrami is amazing with kids. The clinic is modern, clean, and the whole experience is always smooth and pleasant."</p>
+          <p class="testimonial-author" data-i18n="testimonial_3_name">— Lindita S.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== TEAM ===== -->
   <section id="team" class="section team">
     <div class="container">
       <h2 class="section-title fade-in" data-i18n="team_title">Our Team</h2>
 
       <div class="team-grid">
-        <div class="team-card fade-in">
-          <div class="team-photo"><i class="fa-solid fa-user-doctor"></i></div>
+        <div class="team-card fade-in" data-doctor-id="arben">
+          <div class="team-photo"><img src="images/team-male-1.jpg" alt="Dr. Arben Selimi"></div>
           <div class="team-info">
             <h3>Dr. Arben Selimi</h3>
             <p data-i18n="team_role_1">Lead Dentist</p>
             <p class="experience">15+ <span data-i18n="team_experience">years of experience</span></p>
+            <a href="#appointment" class="btn-book-doctor" data-i18n="team_book_btn">Book Now</a>
           </div>
         </div>
 
-        <div class="team-card fade-in">
-          <div class="team-photo"><i class="fa-solid fa-user-doctor"></i></div>
+        <div class="team-card fade-in" data-doctor-id="fjolla">
+          <div class="team-photo"><img src="images/team-female-2.jpg" alt="Dr. Fjolla Ismaili"></div>
           <div class="team-info">
             <h3>Dr. Fjolla Ismaili</h3>
             <p data-i18n="team_role_2">Orthodontist</p>
             <p class="experience">10+ <span data-i18n="team_experience">years of experience</span></p>
+            <a href="#appointment" class="btn-book-doctor" data-i18n="team_book_btn">Book Now</a>
           </div>
         </div>
 
-        <div class="team-card fade-in">
-          <div class="team-photo"><i class="fa-solid fa-user-doctor"></i></div>
+        <div class="team-card fade-in" data-doctor-id="burim">
+          <div class="team-photo"><img src="images/team-male-2.jpg" alt="Dr. Burim Ahmeti"></div>
           <div class="team-info">
             <h3>Dr. Burim Ahmeti</h3>
             <p data-i18n="team_role_3">Dental Surgeon</p>
             <p class="experience">12+ <span data-i18n="team_experience">years of experience</span></p>
+            <a href="#appointment" class="btn-book-doctor" data-i18n="team_book_btn">Book Now</a>
           </div>
         </div>
 
-        <div class="team-card fade-in">
-          <div class="team-photo"><i class="fa-solid fa-user-doctor"></i></div>
+        <div class="team-card fade-in" data-doctor-id="elira">
+          <div class="team-photo"><img src="images/team-female-1.jpg" alt="Dr. Elira Bajrami"></div>
           <div class="team-info">
             <h3>Dr. Elira Bajrami</h3>
             <p data-i18n="team_role_4">Pediatric Dentist</p>
             <p class="experience">8+ <span data-i18n="team_experience">years of experience</span></p>
+            <a href="#appointment" class="btn-book-doctor" data-i18n="team_book_btn">Book Now</a>
           </div>
         </div>
       </div>
@@ -260,9 +321,17 @@
       <p class="section-subtitle fade-in" data-i18n="appointment_subtitle">Schedule your visit today. Fill out the form and we'll get back to you shortly.</p>
 
       <div class="booking-wrapper fade-in">
+        <!-- Step 0: Select Doctor -->
+        <div class="booking-step" id="booking-step-doctor">
+          <h3 class="booking-step-title" data-i18n="booking_select_doctor">Select a Dentist</h3>
+          <p class="booking-step-subtitle" data-i18n="booking_select_doctor_sub">Choose your preferred dentist to continue</p>
+          <div class="doctor-select-grid" id="doctor-select-grid"></div>
+        </div>
+
         <!-- Step 1: Calendar -->
-        <div class="booking-step" id="booking-step-date">
+        <div class="booking-step hidden" id="booking-step-date">
           <h3 class="booking-step-title" data-i18n="booking_select_date">Select a Date</h3>
+          <div class="booking-summary-chip" id="selected-doctor-chip"></div>
           <div class="booking-calendar">
             <div class="cal-header">
               <button class="cal-nav" id="cal-prev" aria-label="Previous month">&#x2039;</button>
@@ -276,6 +345,7 @@
             <span class="legend-item"><span class="legend-dot legend-available"></span> <span data-i18n="booking_available">Available</span></span>
             <span class="legend-item"><span class="legend-dot legend-closed"></span> <span data-i18n="booking_sun_closed">Closed on Sundays</span></span>
           </div>
+          <button class="booking-back-btn" id="back-to-doctors">&#x2039; <span data-i18n="booking_select_doctor">Select a Dentist</span></button>
         </div>
 
         <!-- Step 2: Time Slots -->
@@ -390,8 +460,8 @@
           <a href="#home" data-i18n="nav_home">Home</a>
           <a href="#about" data-i18n="nav_about">About</a>
           <a href="#services" data-i18n="nav_services">Services</a>
-          <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
-          <a href="#team" data-i18n="nav_team">Our Team</a>
+          <a href="gallery.html" data-i18n="nav_gallery">Gallery</a>
+          <a href="team.html" data-i18n="nav_team">Our Team</a>
           <a href="#appointment" data-i18n="nav_appointment">Appointment</a>
         </div>
 
@@ -416,6 +486,16 @@
       </div>
     </div>
   </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/38971586769" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 
   <script src="js/i18n.js"></script>
   <script type="module" src="js/main.js"></script>

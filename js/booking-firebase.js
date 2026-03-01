@@ -4,13 +4,18 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 /**
- * Subscribe to real-time slot status for a given date.
- * @param {string} dateStr  YYYY-MM-DD
- * @param {function} callback  receives Map<time, status>
+ * Subscribe to real-time slot status for a given doctor + date.
+ * @param {string} doctorId   Doctor identifier (e.g. "arben")
+ * @param {string} dateStr    YYYY-MM-DD
+ * @param {function} callback receives Map<time, status>
  * @returns {function} unsubscribe
  */
-export function subscribeToDateSlots(dateStr, callback) {
-  const q = query(collection(db, "appointments"), where("date", "==", dateStr));
+export function subscribeToDateSlots(doctorId, dateStr, callback) {
+  const q = query(
+    collection(db, "appointments"),
+    where("doctorId", "==", doctorId),
+    where("date", "==", dateStr)
+  );
   return onSnapshot(q, (snapshot) => {
     const slots = new Map();
     snapshot.forEach((d) => {
@@ -27,10 +32,12 @@ export function subscribeToDateSlots(dateStr, callback) {
 /**
  * Submit a new appointment with status "pending".
  * Uses deterministic doc ID to prevent double-booking race conditions.
+ * Format: doctorId_date_time (each doctor has independent slots).
  */
-export async function submitAppointment(dateStr, time, name, phone, reason) {
-  const docId = `${dateStr}_${time}`;
+export async function submitAppointment(doctorId, dateStr, time, name, phone, reason) {
+  const docId = `${doctorId}_${dateStr}_${time}`;
   await setDoc(doc(db, "appointments", docId), {
+    doctorId,
     date: dateStr,
     time,
     name,

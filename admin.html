@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fjolla Medika - Admin Panel</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -42,6 +43,13 @@
       <button class="admin-tab active" data-filter="pending">Pending <span class="tab-count" id="count-pending"></span></button>
       <button class="admin-tab" data-filter="accepted">Accepted <span class="tab-count" id="count-accepted"></span></button>
       <button class="admin-tab" data-filter="all">All <span class="tab-count" id="count-all"></span></button>
+    </div>
+
+    <div class="admin-doctor-filter">
+      <label for="doctor-filter">Doctor:</label>
+      <select id="doctor-filter">
+        <option value="all">All Doctors</option>
+      </select>
     </div>
 
     <div class="admin-content" id="appointments-list">

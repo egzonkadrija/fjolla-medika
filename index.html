@@ -8,21 +8,53 @@
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#09111f",
+            mist: "#edf6f1",
+            forest: "#0f5d44",
+            pine: "#0a3d30",
+            sage: "#9dd7bf",
+            line: "rgba(148, 163, 184, 0.22)"
+          },
+          fontFamily: {
+            sans: ["Manrope", "sans-serif"],
+            display: ["Sora", "sans-serif"]
+          },
+          boxShadow: {
+            glow: "0 32px 80px rgba(9, 17, 31, 0.22)"
+          },
+          backgroundImage: {
+            grid: "linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px)"
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/home-tailwind.css">
 </head>
-<body>
+<body class="bg-[#f5f7fb] font-sans text-slate-900 antialiased selection:bg-emerald-200 selection:text-slate-950">
+  <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div class="absolute inset-x-0 top-0 h-[48rem] bg-[radial-gradient(circle_at_top_left,_rgba(74,222,128,0.18),_transparent_26%),radial-gradient(circle_at_75%_18%,_rgba(16,185,129,0.3),_transparent_24%),radial-gradient(circle_at_top,_rgba(255,255,255,0.16),_transparent_28%),linear-gradient(180deg,_#03140f_0%,_#0b2d22_18%,_#13503d_58%,_#eaf3ef_92%)]"></div>
+    <div class="absolute inset-x-0 top-0 h-[40rem] bg-grid bg-[size:42px_42px] opacity-35"></div>
+    <div class="absolute left-[-8rem] top-24 h-72 w-72 rounded-full bg-emerald-300/25 blur-3xl"></div>
+    <div class="absolute right-[-8rem] top-28 h-80 w-80 rounded-full bg-green-200/20 blur-3xl"></div>
+  </div>
 
-  <!-- ===== NAVBAR ===== -->
   <nav class="navbar">
-    <div class="container">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
       <a href="#home" class="navbar-logo">
-        <svg class="tooth-icon" viewBox="0 0 64 64" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="h-8 w-8 text-white" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M32 4C24.5 4 20 8 17.5 12C15 16 14 20 12.5 26C11 32 9 40 12 48C15 56 19 58 22 56C25 54 26 48 28 44C30 40 31 38 32 38C33 38 34 40 36 44C38 48 39 54 42 56C45 58 49 56 52 48C55 40 53 32 51.5 26C50 20 49 16 46.5 12C44 8 39.5 4 32 4Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          <path d="M22 18C25 16 29 15 32 15C35 15 39 16 42 18" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+          <path d="M22 18C25 16 29 15 32 15C35 15 39 16 42 18" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
         </svg>
-        Fjolla <span>Medika</span>
+        <span class="font-display text-lg tracking-tight text-white">Fjolla <span class="text-white/70">Medika</span></span>
       </a>
 
       <button class="menu-toggle" aria-label="Toggle menu">
@@ -36,463 +68,543 @@
         <a href="#about" data-i18n="nav_about">About</a>
         <a href="#services" data-i18n="nav_services">Services</a>
         <a href="gallery.html" data-i18n="nav_gallery">Gallery</a>
-        <a href="team.html" data-i18n="nav_team">Our Team</a>
+        <a href="#team" data-i18n="nav_team">Our Team</a>
         <a href="#appointment" data-i18n="nav_appointment">Appointment</a>
         <a href="#contact" data-i18n="nav_contact">Contact</a>
 
         <div class="lang-switcher">
-          <button class="lang-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          <button class="lang-btn" aria-label="Select language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
             </svg>
             <span class="lang-current">EN</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;">
-              <path d="M6 9l6 6 6-6"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M6 9l6 6 6-6"></path>
             </svg>
           </button>
           <div class="lang-dropdown">
             <button data-lang="en">English</button>
             <button data-lang="sq">Shqip</button>
-            <button data-lang="mk">Македонски</button>
-            <button data-lang="tr">Türkçe</button>
+            <button data-lang="mk">Makedonski</button>
+            <button data-lang="tr">Turkce</button>
           </div>
         </div>
       </div>
     </div>
   </nav>
 
-  <!-- ===== HERO ===== -->
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <svg class="tooth-icon-hero tooth-anim" viewBox="0 0 64 64" width="70" height="70" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M32 4C24.5 4 20 8 17.5 12C15 16 14 20 12.5 26C11 32 9 40 12 48C15 56 19 58 22 56C25 54 26 48 28 44C30 40 31 38 32 38C33 38 34 40 36 44C38 48 39 54 42 56C45 58 49 56 52 48C55 40 53 32 51.5 26C50 20 49 16 46.5 12C44 8 39.5 4 32 4Z" fill="white" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M22 18C25 16 29 15 32 15C35 15 39 16 42 18" stroke="rgba(13,92,63,0.3)" stroke-width="2.5" stroke-linecap="round"/>
-        <ellipse cx="24" cy="12" rx="4" ry="3" fill="white" opacity="0.4"/>
-      </svg>
-      <h1 data-i18n="hero_title">Your Smile, Our Priority</h1>
-      <p data-i18n="hero_subtitle">Welcome to Fjolla Medika — modern dental care with a gentle touch in the heart of North Macedonia.</p>
-      <a href="#appointment" class="btn-primary" data-i18n="hero_cta">Book an Appointment</a>
-    </div>
-  </section>
-
-  <!-- ===== ABOUT ===== -->
-  <section id="about" class="section about">
-    <div class="container">
-      <h2 class="section-title fade-in" data-i18n="about_title">About Us</h2>
-
-      <div class="about-content fade-in">
-        <div class="about-text">
-          <p data-i18n="about_text_1">Fjolla Medika is a modern dental clinic dedicated to providing high-quality oral care for patients of all ages.</p>
-          <p data-i18n="about_text_2">We believe that everyone deserves a healthy, beautiful smile.</p>
-          <h3 data-i18n="about_mission_title">Our Mission</h3>
-          <p data-i18n="about_mission_text">To deliver exceptional dental care with compassion, integrity, and excellence.</p>
-        </div>
-        <div class="about-image">
-          <img src="images/about.jpg" alt="Fjolla Medika dental treatments" loading="lazy">
-        </div>
-      </div>
-
-      <div class="about-values fade-in">
-        <h3 data-i18n="about_values_title">Our Values</h3>
-        <div class="values-grid">
-          <div class="value-card">
-            <div class="value-img"><img src="images/value-patient-care.jpg" alt="Patient-Centered Care" loading="lazy"></div>
-            <div class="value-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
-            <h4 data-i18n="about_value_1">Patient-Centered Care</h4>
+  <main>
+    <section id="home" class="section relative overflow-hidden px-6 pb-14 pt-32 lg:px-8 lg:pb-24 lg:pt-44">
+      <div class="absolute inset-x-0 top-10 mx-auto h-[34rem] max-w-7xl rounded-[3rem] bg-[linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.03))] blur-3xl"></div>
+      <div class="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(180deg,rgba(3,20,15,0),rgba(3,20,15,0.18)_45%,rgba(3,20,15,0.34)_100%)]"></div>
+      <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[minmax(0,1.12fr)_minmax(380px,0.88fr)] lg:items-center">
+        <div class="fade-in">
+          <div class="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white/80 backdrop-blur">
+            <span class="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-300"></span>
+            <span data-i18n="contact_hours_weekday">Monday - Friday: 08:00 - 20:00</span>
           </div>
-          <div class="value-card">
-            <div class="value-img"><img src="images/value-excellence.jpg" alt="Professional Excellence" loading="lazy"></div>
-            <div class="value-icon"><i class="fa-solid fa-trophy"></i></div>
-            <h4 data-i18n="about_value_2">Professional Excellence</h4>
-          </div>
-          <div class="value-card">
-            <div class="value-img"><img src="images/value-technology.jpg" alt="Modern Technology" loading="lazy"></div>
-            <div class="value-icon"><i class="fa-solid fa-microchip"></i></div>
-            <h4 data-i18n="about_value_3">Modern Technology</h4>
-          </div>
-          <div class="value-card">
-            <div class="value-img"><img src="images/value-environment.jpg" alt="Warm Environment" loading="lazy"></div>
-            <div class="value-icon">
-              <span class="fa-stack" style="font-size: 0.75em;">
-                <i class="fa-solid fa-house fa-stack-2x"></i>
-                <i class="fa-solid fa-heart fa-stack-1x" style="color: var(--green-light); font-size: 0.5em; margin-top: 2px;"></i>
-              </span>
-            </div>
-            <h4 data-i18n="about_value_4">Warm Environment</h4>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+          <h1 class="mt-7 max-w-5xl font-display text-[3.45rem] font-semibold leading-[0.92] tracking-[-0.06em] text-white sm:text-[4.9rem] lg:text-[5.9rem] xl:text-[6.8rem]" data-i18n="hero_title">
+            Your Smile, Our Priority
+          </h1>
+          <p class="mt-6 max-w-2xl text-base leading-8 text-slate-200 sm:text-xl" data-i18n="hero_subtitle">
+            Welcome to Fjolla Medika - modern dental care with a gentle touch in the heart of North Macedonia.
+          </p>
 
-  <!-- ===== SERVICES ===== -->
-  <section id="services" class="section services">
-    <div class="container">
-      <h2 class="section-title fade-in" data-i18n="services_title">Our Services</h2>
-
-      <div class="services-grid">
-        <div class="service-card fade-in">
-          <div class="service-img"><img src="images/service-general.jpg" alt="General Dentistry" loading="lazy"></div>
-          <div class="service-icon"><i class="fa-solid fa-tooth"></i></div>
-          <h3 data-i18n="service_1_title">General Dentistry</h3>
-          <p data-i18n="service_1_desc">Comprehensive check-ups, cleanings, fillings, and preventive care.</p>
-        </div>
-
-        <div class="service-card fade-in">
-          <div class="service-img"><img src="images/service-implants.jpg" alt="Dental Implants" loading="lazy"></div>
-          <div class="service-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-          <h3 data-i18n="service_2_title">Dental Implants</h3>
-          <p data-i18n="service_2_desc">Permanent tooth replacement solutions.</p>
-        </div>
-
-        <div class="service-card fade-in">
-          <div class="service-img"><img src="images/service-orthodontics.jpg" alt="Orthodontics" loading="lazy"></div>
-          <div class="service-icon"><i class="fa-solid fa-face-smile-beam"></i></div>
-          <h3 data-i18n="service_3_title">Orthodontics</h3>
-          <p data-i18n="service_3_desc">Braces and aligners to straighten teeth.</p>
-        </div>
-
-        <div class="service-card fade-in">
-          <div class="service-img"><img src="images/service-whitening.jpg" alt="Teeth Whitening" loading="lazy"></div>
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" width="38" height="38" fill="currentColor"><path d="M12 2l1.09 3.26L16.36 6.5l-3.27 1.09L12 10.86l-1.09-3.27L7.64 6.5l3.27-1.24L12 2zm6.5 7l.72 2.17L21.39 12l-2.17.83L18.5 15l-.72-2.17L15.61 12l2.17-.83L18.5 9zM7 14l.72 2.17L9.89 17l-2.17.83L7 20l-.72-2.17L4.11 17l2.17-.83L7 14z"/></svg>
-          </div>
-          <h3 data-i18n="service_4_title">Teeth Whitening</h3>
-          <p data-i18n="service_4_desc">Professional whitening treatments.</p>
-        </div>
-
-        <div class="service-card fade-in">
-          <div class="service-img"><img src="images/service-pediatric.jpg" alt="Pediatric Dentistry" loading="lazy"></div>
-          <div class="service-icon"><i class="fa-solid fa-child-reaching"></i></div>
-          <h3 data-i18n="service_5_title">Pediatric Dentistry</h3>
-          <p data-i18n="service_5_desc">Gentle dental care for children.</p>
-        </div>
-
-        <div class="service-card fade-in">
-          <div class="service-img"><img src="images/service-cosmetic.jpg" alt="Cosmetic Dentistry" loading="lazy"></div>
-          <div class="service-icon"><i class="fa-solid fa-face-grin-stars"></i></div>
-          <h3 data-i18n="service_6_title">Cosmetic Dentistry</h3>
-          <p data-i18n="service_6_desc">Veneers, bonding, and smile makeovers.</p>
-        </div>
-
-        <div class="service-card fade-in">
-          <div class="service-img"><img src="images/service-surgery.jpg" alt="Oral Surgery" loading="lazy"></div>
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor"><path d="M20.71 3.29a1 1 0 0 0-1.42 0L8 14.59l-1.29-1.3a1 1 0 0 0-1.42 1.42l2 2a1 1 0 0 0 1.42 0L20.71 4.71a1 1 0 0 0 0-1.42zM7 16l-3.15 3.15a2 2 0 0 0 0 2.83 2 2 0 0 0 2.83 0L9.83 18.83 7 16z"/></svg>
-          </div>
-          <h3 data-i18n="service_7_title">Oral Surgery</h3>
-          <p data-i18n="service_7_desc">Tooth extractions and surgical procedures.</p>
-        </div>
-
-        <div class="service-card fade-in">
-          <div class="service-img"><img src="images/service-endodontics.jpg" alt="Endodontics" loading="lazy"></div>
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor"><path d="M12 2C10.3 2 9 3.5 9 5.5v4c0 .8-.3 1.5-.8 2.1-.5.6-.8 1.3-.7 2.1.1 1.2.9 2.2 2 2.7V22h1.5v-5.6c.6.1 1.2.1 1.8 0V22H14.5v-5.6c1.1-.5 1.9-1.5 2-2.7.1-.8-.2-1.5-.7-2.1-.5-.6-.8-1.3-.8-2.1v-4C15 3.5 13.7 2 12 2zm-1.5 3.5c0-1.1.7-2 1.5-2s1.5.9 1.5 2v4c0 1.1.4 2.1 1.1 2.9.3.4.5.8.4 1.3-.1.8-.7 1.4-1.5 1.7-.6.2-1.4.2-2 0-.8-.3-1.4-.9-1.5-1.7-.1-.5.1-.9.4-1.3.7-.8 1.1-1.8 1.1-2.9v-4z"/></svg>
-          </div>
-          <h3 data-i18n="service_8_title">Endodontics</h3>
-          <p data-i18n="service_8_desc">Root canal treatments.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== GALLERY (Before & After) ===== -->
-  <section id="gallery" class="section gallery">
-    <div class="container">
-      <h2 class="section-title fade-in" data-i18n="gallery_title">Before & After</h2>
-      <p class="section-subtitle fade-in" data-i18n="gallery_subtitle">See the transformations our patients have experienced. Real results from real people.</p>
-
-      <div class="gallery-grid">
-        <div class="gallery-card fade-in">
-          <img src="images/before-after-1.jpg" alt="Dental transformation 1" loading="lazy">
-          <div class="gallery-label">
-            <span class="label-before" data-i18n="gallery_before">Before</span>
-            <span class="label-after" data-i18n="gallery_after">After</span>
-          </div>
-        </div>
-
-        <div class="gallery-card fade-in">
-          <img src="images/before-after-2.jpg" alt="Dental transformation 2" loading="lazy">
-          <div class="gallery-label">
-            <span class="label-before" data-i18n="gallery_before">Before</span>
-            <span class="label-after" data-i18n="gallery_after">After</span>
-          </div>
-        </div>
-
-        <div class="gallery-card fade-in">
-          <img src="images/before-after-3.jpg" alt="Dental transformation 3" loading="lazy">
-          <div class="gallery-label">
-            <span class="label-before" data-i18n="gallery_before">Before</span>
-            <span class="label-after" data-i18n="gallery_after">After</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TESTIMONIALS ===== -->
-  <section id="testimonials" class="section testimonials">
-    <div class="container">
-      <h2 class="section-title fade-in" data-i18n="testimonials_title">What Our Patients Say</h2>
-
-      <div class="testimonials-grid">
-        <div class="testimonial-card fade-in">
-          <div class="testimonial-stars">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          </div>
-          <p class="testimonial-text" data-i18n="testimonial_1_text">"The best dental experience I've ever had. The team was professional, gentle, and made me feel completely at ease. My smile has never looked better!"</p>
-          <p class="testimonial-author" data-i18n="testimonial_1_name">— Arta M.</p>
-        </div>
-
-        <div class="testimonial-card fade-in">
-          <div class="testimonial-stars">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          </div>
-          <p class="testimonial-text" data-i18n="testimonial_2_text">"I was terrified of dentists, but Dr. Selimi and his team changed that completely. They are patient, kind, and truly care about their patients. Highly recommended!"</p>
-          <p class="testimonial-author" data-i18n="testimonial_2_name">— Besart K.</p>
-        </div>
-
-        <div class="testimonial-card fade-in">
-          <div class="testimonial-stars">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          </div>
-          <p class="testimonial-text" data-i18n="testimonial_3_text">"My children love coming here! Dr. Bajrami is amazing with kids. The clinic is modern, clean, and the whole experience is always smooth and pleasant."</p>
-          <p class="testimonial-author" data-i18n="testimonial_3_name">— Lindita S.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TEAM ===== -->
-  <section id="team" class="section team">
-    <div class="container">
-      <h2 class="section-title fade-in" data-i18n="team_title">Our Team</h2>
-
-      <div class="team-grid">
-        <div class="team-card fade-in" data-doctor-id="arben">
-          <div class="team-photo"><img src="images/team-male-1.jpg" alt="Dr. Arben Selimi"></div>
-          <div class="team-info">
-            <h3>Dr. Arben Selimi</h3>
-            <p data-i18n="team_role_1">Lead Dentist</p>
-            <p class="experience">15+ <span data-i18n="team_experience">years of experience</span></p>
-            <a href="#appointment" class="btn-book-doctor" data-i18n="team_book_btn">Book Now</a>
-          </div>
-        </div>
-
-        <div class="team-card fade-in" data-doctor-id="fjolla">
-          <div class="team-photo"><img src="images/team-female-2.jpg" alt="Dr. Fjolla Ismaili"></div>
-          <div class="team-info">
-            <h3>Dr. Fjolla Ismaili</h3>
-            <p data-i18n="team_role_2">Orthodontist</p>
-            <p class="experience">10+ <span data-i18n="team_experience">years of experience</span></p>
-            <a href="#appointment" class="btn-book-doctor" data-i18n="team_book_btn">Book Now</a>
-          </div>
-        </div>
-
-        <div class="team-card fade-in" data-doctor-id="burim">
-          <div class="team-photo"><img src="images/team-male-2.jpg" alt="Dr. Burim Ahmeti"></div>
-          <div class="team-info">
-            <h3>Dr. Burim Ahmeti</h3>
-            <p data-i18n="team_role_3">Dental Surgeon</p>
-            <p class="experience">12+ <span data-i18n="team_experience">years of experience</span></p>
-            <a href="#appointment" class="btn-book-doctor" data-i18n="team_book_btn">Book Now</a>
-          </div>
-        </div>
-
-        <div class="team-card fade-in" data-doctor-id="elira">
-          <div class="team-photo"><img src="images/team-female-1.jpg" alt="Dr. Elira Bajrami"></div>
-          <div class="team-info">
-            <h3>Dr. Elira Bajrami</h3>
-            <p data-i18n="team_role_4">Pediatric Dentist</p>
-            <p class="experience">8+ <span data-i18n="team_experience">years of experience</span></p>
-            <a href="#appointment" class="btn-book-doctor" data-i18n="team_book_btn">Book Now</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== APPOINTMENT ===== -->
-  <section id="appointment" class="section appointment">
-    <div class="container">
-      <h2 class="section-title fade-in" data-i18n="appointment_title">Book an Appointment</h2>
-      <p class="section-subtitle fade-in" data-i18n="appointment_subtitle">Schedule your visit today. Fill out the form and we'll get back to you shortly.</p>
-
-      <div class="booking-wrapper fade-in">
-        <!-- Step 0: Select Doctor -->
-        <div class="booking-step" id="booking-step-doctor">
-          <h3 class="booking-step-title" data-i18n="booking_select_doctor">Select a Dentist</h3>
-          <p class="booking-step-subtitle" data-i18n="booking_select_doctor_sub">Choose your preferred dentist to continue</p>
-          <div class="doctor-select-grid" id="doctor-select-grid"></div>
-        </div>
-
-        <!-- Step 1: Calendar -->
-        <div class="booking-step hidden" id="booking-step-date">
-          <h3 class="booking-step-title" data-i18n="booking_select_date">Select a Date</h3>
-          <div class="booking-summary-chip" id="selected-doctor-chip"></div>
-          <div class="booking-calendar">
-            <div class="cal-header">
-              <button class="cal-nav" id="cal-prev" aria-label="Previous month">&#x2039;</button>
-              <span class="cal-month-year" id="cal-month-year"></span>
-              <button class="cal-nav" id="cal-next" aria-label="Next month">&#x203A;</button>
-            </div>
-            <div class="cal-weekdays" id="cal-weekdays"></div>
-            <div class="cal-days" id="cal-days"></div>
-          </div>
-          <div class="cal-legend">
-            <span class="legend-item"><span class="legend-dot legend-available"></span> <span data-i18n="booking_available">Available</span></span>
-            <span class="legend-item"><span class="legend-dot legend-closed"></span> <span data-i18n="booking_sun_closed">Closed on Sundays</span></span>
-          </div>
-          <button class="booking-back-btn" id="back-to-doctors">&#x2039; <span data-i18n="booking_select_doctor">Select a Dentist</span></button>
-        </div>
-
-        <!-- Step 2: Time Slots -->
-        <div class="booking-step hidden" id="booking-step-time">
-          <h3 class="booking-step-title" data-i18n="booking_select_time">Select a Time</h3>
-          <div class="booking-summary-chip" id="selected-date-chip"></div>
-          <div class="booking-slots" id="booking-slots"></div>
-          <div class="slots-legend">
-            <span class="legend-item"><span class="legend-dot legend-available"></span> <span data-i18n="booking_available">Available</span></span>
-            <span class="legend-item"><span class="legend-dot legend-pending"></span> <span data-i18n="booking_pending">Pending</span></span>
-            <span class="legend-item"><span class="legend-dot legend-booked"></span> <span data-i18n="booking_booked">Booked</span></span>
-          </div>
-          <button class="booking-back-btn" id="back-to-calendar">&#x2039; <span data-i18n="booking_select_date">Select a Date</span></button>
-        </div>
-
-        <!-- Step 3: Form -->
-        <div class="booking-step hidden" id="booking-step-form">
-          <h3 class="booking-step-title" data-i18n="booking_your_details">Your Details</h3>
-          <div class="booking-summary-chip" id="selected-datetime-chip"></div>
-          <form id="appointment-form" class="appointment-form-inner">
-            <div class="form-group">
-              <label data-i18n="form_name">Full Name</label>
-              <input type="text" id="booking-name" data-i18n="form_name" required>
-            </div>
-            <div class="form-group">
-              <label data-i18n="form_phone">Phone Number</label>
-              <input type="tel" id="booking-phone" data-i18n="form_phone" required>
-            </div>
-            <div class="form-group">
-              <label data-i18n="form_reason">Reason for Visit</label>
-              <textarea id="booking-reason" data-i18n="form_reason" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn-submit" data-i18n="booking_confirm">Confirm Appointment</button>
-          </form>
-          <button class="booking-back-btn" id="back-to-slots">&#x2039; <span data-i18n="booking_select_time">Select a Time</span></button>
-        </div>
-
-        <!-- Success -->
-        <div id="form-success" class="form-success" data-i18n="form_success">
-          Thank you! Your appointment request has been submitted.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CONTACT ===== -->
-  <section id="contact" class="section contact">
-    <div class="container">
-      <h2 class="section-title fade-in" data-i18n="contact_title">Contact Us</h2>
-
-      <div class="contact-content fade-in">
-        <div class="contact-info-list">
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fa-solid fa-clock"></i></div>
-            <div class="contact-details">
-              <h4 data-i18n="contact_hours_label">Working Hours</h4>
-              <p data-i18n="contact_hours_weekday">Monday - Friday: 08:00 - 20:00</p>
-              <p data-i18n="contact_hours_saturday">Saturday: 09:00 - 15:00</p>
-              <p data-i18n="contact_hours_sunday">Sunday: Closed</p>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <a href="tel:+38971586769" class="contact-btn">
-              <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
-              <span data-i18n="contact_call_btn">Call Now</span>
+          <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <a href="#appointment" class="inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#ffffff,#dff7ec)] px-7 py-4 text-sm font-semibold text-slate-950 shadow-glow transition hover:-translate-y-0.5" data-i18n="hero_cta">
+              <span>Book an Appointment</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
             </a>
+            <p class="max-w-md text-sm font-medium leading-7 text-slate-200">Modern consultations, careful treatment planning, and a calmer visit experience.</p>
           </div>
 
-          <div class="contact-item">
-            <a href="mailto:info@fjollamedika.mk" class="contact-btn">
-              <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
-              <span data-i18n="contact_email_btn">Contact via Email</span>
-            </a>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
-            <div class="contact-details">
-              <h4 data-i18n="contact_address_label">Address</h4>
-              <p data-i18n="contact_address">Georgi Pophristov 4-1/8, Skopje, North Macedonia</p>
+          <div class="mt-10 grid gap-4 sm:grid-cols-3">
+            <div class="rounded-3xl border border-white/10 bg-white/[0.08] p-5 backdrop-blur-md">
+              <p class="text-3xl font-semibold text-white">15+</p>
+              <p class="mt-2 text-sm text-slate-200" data-i18n="team_experience">years of experience</p>
+            </div>
+            <div class="rounded-3xl border border-white/10 bg-white/[0.08] p-5 backdrop-blur-md">
+              <p class="text-3xl font-semibold text-white">4</p>
+              <p class="mt-2 text-sm text-slate-200" data-i18n="team_title">Our Team</p>
+            </div>
+            <div class="rounded-3xl border border-white/10 bg-white/[0.08] p-5 backdrop-blur-md">
+              <p class="text-3xl font-semibold text-white">6d</p>
+              <p class="mt-2 text-sm text-slate-200" data-i18n="contact_hours_saturday">Saturday: 09:00 - 15:00</p>
             </div>
           </div>
         </div>
 
-        <div class="contact-map">
+        <div class="fade-in lg:justify-self-end">
+          <div class="relative">
+            <div class="absolute -left-8 top-10 hidden h-32 w-32 rounded-full bg-emerald-300/20 blur-3xl lg:block"></div>
+            <div class="relative overflow-hidden rounded-[2.25rem] border border-white/10 bg-white/85 p-5 shadow-glow backdrop-blur-xl">
+              <div class="overflow-hidden rounded-[1.75rem] bg-slate-900">
+                <img src="images/about.jpg" alt="Fjolla Medika dental treatments" class="h-[23rem] w-full object-cover object-center">
+              </div>
+              <div class="mt-5 grid gap-4">
+                <div class="rounded-[1.5rem] bg-slate-950 p-5 text-white">
+                  <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
+                    <span data-i18n="appointment_title">Book an Appointment</span>
+                    <span>Fast intake</span>
+                  </div>
+                  <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                    <div class="rounded-2xl bg-white/10 px-4 py-3">
+                      <p class="text-[11px] uppercase tracking-[0.18em] text-white/45" data-i18n="booking_select_doctor">Select a Dentist</p>
+                      <p class="mt-1 text-sm font-semibold">Dr. Arben Selimi</p>
+                    </div>
+                    <div class="rounded-2xl bg-emerald-400/15 px-4 py-3 text-emerald-100">
+                      <p class="text-[11px] uppercase tracking-[0.18em] text-emerald-100/55" data-i18n="booking_select_time">Select a Time</p>
+                      <p class="mt-1 text-sm font-semibold">09:00 - 12:00</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="grid gap-4 sm:grid-cols-2">
+                  <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
+                    <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500" data-i18n="about_values_title">Our Values</p>
+                    <p class="mt-3 text-sm font-semibold text-slate-950" data-i18n="about_value_1">Patient-Centered Care</p>
+                    <p class="mt-1 text-sm text-slate-500" data-i18n="about_value_3">Modern Technology</p>
+                  </div>
+                  <div class="rounded-[1.5rem] border border-slate-200 bg-white p-5">
+                    <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500" data-i18n="contact_address_label">Address</p>
+                    <p class="mt-3 text-sm leading-7 text-slate-700" data-i18n="contact_address">Georgi Pophristov 4-1/8, Skopje, North Macedonia</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section px-6 py-20 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-end">
+          <div class="fade-in">
+            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-forest/65" data-i18n="about_title">About Us</p>
+            <h2 class="mt-4 max-w-2xl font-display text-4xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-5xl">
+              Precision, calm, and a clinical experience that feels considered.
+            </h2>
+          </div>
+          <div class="fade-in rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_24px_80px_rgba(15,23,42,0.06)]">
+            <p class="text-base leading-8 text-slate-600" data-i18n="about_text_1">Fjolla Medika is a modern dental clinic dedicated to providing high-quality oral care for patients of all ages. Our team of experienced professionals uses the latest technology and techniques to ensure your comfort and satisfaction.</p>
+            <p class="mt-4 text-base leading-8 text-slate-600" data-i18n="about_mission_text">To deliver exceptional dental care with compassion, integrity, and excellence - making every patient feel valued and confident in their smile.</p>
+          </div>
+        </div>
+
+          <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <div class="fade-in rounded-[2rem] border border-slate-200 bg-white p-6">
+            <p class="text-sm font-semibold text-slate-900" data-i18n="about_value_1">Patient-Centered Care</p>
+            <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="about_text_2">We believe that everyone deserves a healthy, beautiful smile.</p>
+          </div>
+          <div class="fade-in rounded-[2rem] border border-slate-200 bg-white p-6">
+            <p class="text-sm font-semibold text-slate-900" data-i18n="about_value_2">Professional Excellence</p>
+            <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="about_mission_title">Our Mission</p>
+          </div>
+          <div class="fade-in rounded-[2rem] border border-slate-200 bg-white p-6">
+            <p class="text-sm font-semibold text-slate-900" data-i18n="about_value_3">Modern Technology</p>
+            <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="service_2_desc">Permanent tooth replacement solutions using state-of-the-art implant technology.</p>
+          </div>
+          <div class="fade-in rounded-[2rem] border border-slate-200 bg-white p-6">
+            <p class="text-sm font-semibold text-slate-900" data-i18n="about_value_4">Warm Environment</p>
+            <p class="mt-3 text-sm leading-7 text-slate-500" data-i18n="testimonial_3_text">"My children love going to Fjolla Medika! Dr. Elira is so patient and gentle with them."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section px-6 py-20 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="fade-in flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-forest/65" data-i18n="services_title">Our Services</p>
+            <h2 class="mt-4 max-w-3xl font-display text-4xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-5xl">
+              A focused set of treatments, presented like a product suite instead of a brochure.
+            </h2>
+          </div>
+          <a href="#appointment" class="inline-flex items-center rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-900">
+            <span data-i18n="hero_cta">Book an Appointment</span>
+          </a>
+        </div>
+
+        <div class="mt-10 grid gap-5 lg:grid-cols-12">
+          <article class="fade-in overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_16px_50px_rgba(15,23,42,0.06)] lg:col-span-6">
+            <img src="images/service-general.jpg" alt="General Dentistry" class="h-80 w-full object-cover">
+            <div class="p-7 sm:p-8">
+              <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">01</p>
+              <h3 class="mt-3 font-display text-[1.45rem] font-semibold text-slate-950" data-i18n="service_1_title">General Dentistry</h3>
+              <p class="mt-4 text-[0.96rem] leading-8 text-slate-500" data-i18n="service_1_desc">Comprehensive check-ups, cleanings, fillings, and preventive care to keep your teeth healthy.</p>
+            </div>
+          </article>
+          <article class="fade-in overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_16px_50px_rgba(15,23,42,0.06)] lg:col-span-6">
+            <img src="images/service-implants.jpg" alt="Dental Implants" class="h-80 w-full object-cover">
+            <div class="p-7 sm:p-8">
+              <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">02</p>
+              <h3 class="mt-3 font-display text-[1.45rem] font-semibold text-slate-950" data-i18n="service_2_title">Dental Implants</h3>
+              <p class="mt-4 text-[0.96rem] leading-8 text-slate-500" data-i18n="service_2_desc">Permanent tooth replacement solutions using state-of-the-art implant technology.</p>
+            </div>
+          </article>
+          <article class="fade-in overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_16px_50px_rgba(15,23,42,0.06)] lg:col-span-4">
+            <img src="images/service-orthodontics.jpg" alt="Orthodontics" class="h-72 w-full object-cover">
+            <div class="p-7">
+              <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">03</p>
+              <h3 class="mt-3 font-display text-[1.35rem] font-semibold text-slate-950" data-i18n="service_3_title">Orthodontics</h3>
+              <p class="mt-4 text-[0.95rem] leading-8 text-slate-500" data-i18n="service_3_desc">Braces and aligners to straighten teeth and correct bite issues for all ages.</p>
+            </div>
+          </article>
+          <article class="fade-in overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_16px_50px_rgba(15,23,42,0.06)] lg:col-span-4">
+            <img src="images/service-whitening.jpg" alt="Teeth Whitening" class="h-72 w-full object-cover">
+            <div class="p-7">
+              <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">04</p>
+              <h3 class="mt-3 font-display text-[1.35rem] font-semibold text-slate-950" data-i18n="service_4_title">Teeth Whitening</h3>
+              <p class="mt-4 text-[0.95rem] leading-8 text-slate-500" data-i18n="service_4_desc">Professional whitening treatments to brighten your smile safely and effectively.</p>
+            </div>
+          </article>
+          <article class="fade-in rounded-[2rem] border border-slate-200 bg-slate-950 p-8 text-white lg:col-span-4">
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-white/50" data-i18n="about_mission_title">Our Mission</p>
+            <p class="mt-4 text-xl font-semibold leading-8" data-i18n="about_mission_text">To deliver exceptional dental care with compassion, integrity, and excellence - making every patient feel valued and confident in their smile.</p>
+            <div class="mt-6 grid gap-3 text-sm text-white/70">
+              <p data-i18n="service_5_title">Pediatric Dentistry</p>
+              <p data-i18n="service_6_title">Cosmetic Dentistry</p>
+              <p data-i18n="service_7_title">Oral Surgery</p>
+              <p data-i18n="service_8_title">Endodontics</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section px-6 py-20 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="fade-in flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-forest/65" data-i18n="gallery_title">Before &amp; After</p>
+            <h2 class="mt-4 max-w-3xl font-display text-4xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-5xl">
+              Visual proof, edited with more restraint and less clutter.
+            </h2>
+            <p class="mt-4 max-w-2xl text-base leading-8 text-slate-600" data-i18n="gallery_subtitle">See the transformations our patients have experienced. Real results from real people.</p>
+          </div>
+          <a href="gallery.html" class="inline-flex items-center rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-900">
+            <span data-i18n="nav_gallery">Gallery</span>
+          </a>
+        </div>
+
+        <div class="mt-10 grid gap-5 lg:grid-cols-3">
+          <div class="fade-in overflow-hidden rounded-[2rem] border border-slate-200 bg-white">
+            <img src="images/before-after-1.jpg" alt="Dental transformation 1" class="h-80 w-full object-cover">
+            <div class="flex items-center justify-between px-6 py-5">
+              <span class="rounded-full bg-rose-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-rose-600" data-i18n="gallery_before">Before</span>
+              <span class="rounded-full bg-emerald-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700" data-i18n="gallery_after">After</span>
+            </div>
+          </div>
+          <div class="fade-in overflow-hidden rounded-[2rem] border border-slate-200 bg-white">
+            <img src="images/before-after-2.jpg" alt="Dental transformation 2" class="h-80 w-full object-cover">
+            <div class="flex items-center justify-between px-6 py-5">
+              <span class="rounded-full bg-rose-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-rose-600" data-i18n="gallery_before">Before</span>
+              <span class="rounded-full bg-emerald-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700" data-i18n="gallery_after">After</span>
+            </div>
+          </div>
+          <div class="fade-in overflow-hidden rounded-[2rem] border border-slate-200 bg-white">
+            <img src="images/before-after-3.jpg" alt="Dental transformation 3" class="h-80 w-full object-cover">
+            <div class="flex items-center justify-between px-6 py-5">
+              <span class="rounded-full bg-rose-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-rose-600" data-i18n="gallery_before">Before</span>
+              <span class="rounded-full bg-emerald-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700" data-i18n="gallery_after">After</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="section px-6 py-20 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="fade-in rounded-[2.5rem] border border-slate-200 bg-white p-8 shadow-[0_24px_80px_rgba(15,23,42,0.06)] sm:p-10">
+          <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.28em] text-forest/65" data-i18n="testimonials_title">What Our Patients Say</p>
+              <h2 class="mt-4 font-display text-4xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-5xl">
+                Social proof with breathing room and a quieter visual tone.
+              </h2>
+            </div>
+            <div class="grid gap-4 md:grid-cols-3">
+              <article class="rounded-[1.75rem] border border-slate-200 bg-slate-50 p-6">
+                <div class="flex gap-1 text-amber-400">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="mt-4 text-sm leading-7 text-slate-600" data-i18n="testimonial_1_text">"Fjolla Medika completely changed my smile."</p>
+                <p class="mt-4 text-sm font-semibold text-slate-950" data-i18n="testimonial_1_name">Arta M.</p>
+              </article>
+              <article class="rounded-[1.75rem] border border-slate-200 bg-slate-50 p-6">
+                <div class="flex gap-1 text-amber-400">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="mt-4 text-sm leading-7 text-slate-600" data-i18n="testimonial_2_text">"I was always afraid of the dentist, but at Fjolla Medika I finally felt comfortable."</p>
+                <p class="mt-4 text-sm font-semibold text-slate-950" data-i18n="testimonial_2_name">Besnik H.</p>
+              </article>
+              <article class="rounded-[1.75rem] border border-slate-200 bg-slate-50 p-6">
+                <div class="flex gap-1 text-amber-400">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="mt-4 text-sm leading-7 text-slate-600" data-i18n="testimonial_3_text">"My children love going to Fjolla Medika! Dr. Elira is so patient and gentle with them."</p>
+                <p class="mt-4 text-sm font-semibold text-slate-950" data-i18n="testimonial_3_name">Lindita R.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="section px-6 py-20 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="fade-in flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-forest/65" data-i18n="team_title">Our Team</p>
+            <h2 class="mt-4 max-w-3xl font-display text-4xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-5xl">
+              Four specialist profiles, kept clear and high-trust.
+            </h2>
+          </div>
+          <a href="team.html" class="inline-flex items-center rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-900">
+            <span data-i18n="nav_team">Our Team</span>
+          </a>
+        </div>
+
+        <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <article class="team-card fade-in rounded-[2rem] border border-slate-200 bg-white p-4 shadow-[0_16px_50px_rgba(15,23,42,0.06)]" data-doctor-id="arben">
+            <div class="overflow-hidden rounded-[1.5rem] bg-slate-100">
+              <img src="images/team-male-1.jpg" alt="Dr. Arben Selimi" class="h-80 w-full object-cover object-top">
+            </div>
+            <div class="pt-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">01</p>
+              <h3 class="mt-3 text-xl font-semibold text-slate-950">Dr. Arben Selimi</h3>
+              <p class="mt-1 text-sm text-slate-500" data-i18n="team_role_1">Lead Dentist</p>
+              <p class="mt-4 text-sm text-slate-600">15+ <span data-i18n="team_experience">years of experience</span></p>
+              <a href="#appointment" class="btn-book-doctor mt-5 inline-flex items-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-forest" data-i18n="team_book_btn">Book Now</a>
+            </div>
+          </article>
+
+          <article class="team-card fade-in rounded-[2rem] border border-slate-200 bg-white p-4 shadow-[0_16px_50px_rgba(15,23,42,0.06)]" data-doctor-id="fjolla">
+            <div class="overflow-hidden rounded-[1.5rem] bg-slate-100">
+              <img src="images/team-female-2.jpg" alt="Dr. Fjolla Ismaili" class="h-80 w-full object-cover object-top">
+            </div>
+            <div class="pt-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">02</p>
+              <h3 class="mt-3 text-xl font-semibold text-slate-950">Dr. Fjolla Ismaili</h3>
+              <p class="mt-1 text-sm text-slate-500" data-i18n="team_role_2">Orthodontist</p>
+              <p class="mt-4 text-sm text-slate-600">10+ <span data-i18n="team_experience">years of experience</span></p>
+              <a href="#appointment" class="btn-book-doctor mt-5 inline-flex items-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-forest" data-i18n="team_book_btn">Book Now</a>
+            </div>
+          </article>
+
+          <article class="team-card fade-in rounded-[2rem] border border-slate-200 bg-white p-4 shadow-[0_16px_50px_rgba(15,23,42,0.06)]" data-doctor-id="burim">
+            <div class="overflow-hidden rounded-[1.5rem] bg-slate-100">
+              <img src="images/team-male-2.jpg" alt="Dr. Burim Ahmeti" class="h-80 w-full object-cover object-top">
+            </div>
+            <div class="pt-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">03</p>
+              <h3 class="mt-3 text-xl font-semibold text-slate-950">Dr. Burim Ahmeti</h3>
+              <p class="mt-1 text-sm text-slate-500" data-i18n="team_role_3">Dental Surgeon</p>
+              <p class="mt-4 text-sm text-slate-600">12+ <span data-i18n="team_experience">years of experience</span></p>
+              <a href="#appointment" class="btn-book-doctor mt-5 inline-flex items-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-forest" data-i18n="team_book_btn">Book Now</a>
+            </div>
+          </article>
+
+          <article class="team-card fade-in rounded-[2rem] border border-slate-200 bg-white p-4 shadow-[0_16px_50px_rgba(15,23,42,0.06)]" data-doctor-id="elira">
+            <div class="overflow-hidden rounded-[1.5rem] bg-slate-100">
+              <img src="images/team-female-1.jpg" alt="Dr. Elira Bajrami" class="h-80 w-full object-cover object-top">
+            </div>
+            <div class="pt-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">04</p>
+              <h3 class="mt-3 text-xl font-semibold text-slate-950">Dr. Elira Bajrami</h3>
+              <p class="mt-1 text-sm text-slate-500" data-i18n="team_role_4">Pediatric Dentist</p>
+              <p class="mt-4 text-sm text-slate-600">8+ <span data-i18n="team_experience">years of experience</span></p>
+              <a href="#appointment" class="btn-book-doctor mt-5 inline-flex items-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-forest" data-i18n="team_book_btn">Book Now</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="appointment" class="section px-6 py-20 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,0.88fr)_minmax(340px,0.72fr)]">
+        <div class="fade-in rounded-[2.5rem] bg-slate-950 p-8 text-white shadow-glow sm:p-10">
+          <p class="text-sm font-semibold uppercase tracking-[0.28em] text-white/55" data-i18n="appointment_title">Book an Appointment</p>
+          <h2 class="mt-4 font-display text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+            Booking should feel as polished as the care itself.
+          </h2>
+          <p class="mt-5 max-w-xl text-base leading-8 text-slate-300" data-i18n="appointment_subtitle">Schedule your visit today. Fill out the form and we'll get back to you shortly.</p>
+
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <div class="rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/50" data-i18n="contact_hours_label">Working Hours</p>
+              <p class="mt-3 text-sm text-white/85" data-i18n="contact_hours_weekday">Monday - Friday: 08:00 - 20:00</p>
+              <p class="mt-2 text-sm text-white/85" data-i18n="contact_hours_saturday">Saturday: 09:00 - 15:00</p>
+            </div>
+            <div class="rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/50" data-i18n="contact_address_label">Address</p>
+              <p class="mt-3 text-sm text-white/85" data-i18n="contact_address">Georgi Pophristov 4-1/8, Skopje, North Macedonia</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-wrapper fade-in rounded-[2rem] border border-slate-200 bg-white/90 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:p-8">
+          <div class="booking-step" id="booking-step-doctor">
+            <h3 class="booking-step-title text-center font-display text-[1.45rem] font-semibold text-slate-950" data-i18n="booking_select_doctor">Select a Dentist</h3>
+            <p class="booking-step-subtitle mt-2 text-center text-[0.95rem] text-slate-500" data-i18n="booking_select_doctor_sub">Choose your preferred dentist to continue</p>
+            <div class="doctor-select-grid" id="doctor-select-grid"></div>
+          </div>
+
+          <div class="booking-step hidden" id="booking-step-date">
+            <h3 class="booking-step-title text-center font-display text-[1.35rem] font-semibold text-slate-950" data-i18n="booking_select_date">Select a Date</h3>
+            <div class="booking-summary-chip" id="selected-doctor-chip"></div>
+            <div class="booking-calendar">
+              <div class="cal-header">
+                <button class="cal-nav" id="cal-prev" aria-label="Previous month">&#x2039;</button>
+                <span class="cal-month-year" id="cal-month-year"></span>
+                <button class="cal-nav" id="cal-next" aria-label="Next month">&#x203A;</button>
+              </div>
+              <div class="cal-weekdays" id="cal-weekdays"></div>
+              <div class="cal-days" id="cal-days"></div>
+            </div>
+            <div class="cal-legend">
+              <span class="legend-item"><span class="legend-dot legend-available"></span> <span data-i18n="booking_available">Available</span></span>
+              <span class="legend-item"><span class="legend-dot legend-closed"></span> <span data-i18n="booking_sun_closed">Closed on Sundays</span></span>
+            </div>
+            <button class="booking-back-btn" id="back-to-doctors">&#x2039; <span data-i18n="booking_select_doctor">Select a Dentist</span></button>
+          </div>
+
+          <div class="booking-step hidden" id="booking-step-time">
+            <h3 class="booking-step-title text-center font-display text-[1.35rem] font-semibold text-slate-950" data-i18n="booking_select_time">Select a Time</h3>
+            <div class="booking-summary-chip" id="selected-date-chip"></div>
+            <div class="booking-slots" id="booking-slots"></div>
+            <div class="slots-legend">
+              <span class="legend-item"><span class="legend-dot legend-available"></span> <span data-i18n="booking_available">Available</span></span>
+              <span class="legend-item"><span class="legend-dot legend-pending"></span> <span data-i18n="booking_pending">Pending</span></span>
+              <span class="legend-item"><span class="legend-dot legend-booked"></span> <span data-i18n="booking_booked">Booked</span></span>
+            </div>
+            <button class="booking-back-btn" id="back-to-calendar">&#x2039; <span data-i18n="booking_select_date">Select a Date</span></button>
+          </div>
+
+          <div class="booking-step hidden" id="booking-step-form">
+            <h3 class="booking-step-title text-center font-display text-[1.35rem] font-semibold text-slate-950" data-i18n="booking_your_details">Your Details</h3>
+            <div class="booking-summary-chip" id="selected-datetime-chip"></div>
+            <form id="appointment-form" class="appointment-form-inner">
+              <div class="form-group">
+                <label data-i18n="form_name">Full Name</label>
+                <input type="text" id="booking-name" data-i18n="form_name" required>
+              </div>
+              <div class="form-group">
+                <label data-i18n="form_phone">Phone Number</label>
+                <input type="tel" id="booking-phone" data-i18n="form_phone" required>
+              </div>
+              <div class="form-group">
+                <label data-i18n="form_reason">Reason for Visit</label>
+                <textarea id="booking-reason" data-i18n="form_reason" rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn-submit" data-i18n="booking_confirm">Confirm Appointment</button>
+            </form>
+            <button class="booking-back-btn" id="back-to-slots">&#x2039; <span data-i18n="booking_select_time">Select a Time</span></button>
+          </div>
+
+          <div id="form-success" class="form-success" data-i18n="form_success">
+            Thank you! Your appointment request has been submitted.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section px-6 pb-20 pt-8 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+        <div class="fade-in rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_16px_50px_rgba(15,23,42,0.05)]">
+          <p class="text-sm font-semibold uppercase tracking-[0.28em] text-forest/65" data-i18n="contact_title">Contact Us</p>
+          <h2 class="mt-4 font-display text-4xl font-semibold tracking-[-0.04em] text-slate-950">Visit the clinic, call directly, or message us first.</h2>
+          <div class="mt-8 space-y-5 text-sm text-slate-600">
+            <div class="rounded-[1.5rem] bg-slate-50 p-5">
+              <p class="font-semibold text-slate-950" data-i18n="contact_hours_label">Working Hours</p>
+              <p class="mt-2" data-i18n="contact_hours_weekday">Monday - Friday: 08:00 - 20:00</p>
+              <p class="mt-1" data-i18n="contact_hours_saturday">Saturday: 09:00 - 15:00</p>
+              <p class="mt-1" data-i18n="contact_hours_sunday">Sunday: Closed</p>
+            </div>
+            <a href="tel:+38971586769" class="flex items-center justify-between rounded-[1.5rem] border border-slate-200 px-5 py-4 transition hover:border-slate-900">
+              <span class="font-semibold text-slate-950" data-i18n="contact_call_btn">Call Now</span>
+              <span>+389 71 586 769</span>
+            </a>
+            <a href="mailto:info@fjollamedika.mk" class="flex items-center justify-between rounded-[1.5rem] border border-slate-200 px-5 py-4 transition hover:border-slate-900">
+              <span class="font-semibold text-slate-950" data-i18n="contact_email_btn">Contact via Email</span>
+              <span>info@fjollamedika.mk</span>
+            </a>
+            <div class="rounded-[1.5rem] bg-slate-950 p-5 text-white">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/55" data-i18n="contact_address_label">Address</p>
+              <p class="mt-3 text-sm text-white/85" data-i18n="contact_address">Georgi Pophristov 4-1/8, Skopje, North Macedonia</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-in overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_16px_50px_rgba(15,23,42,0.05)]">
           <iframe
             src="https://maps.google.com/maps?q=42.01619,21.4327&t=&z=17&ie=UTF8&iwloc=&output=embed"
             width="100%"
             height="100%"
-            style="border:0; min-height:400px;"
+            style="border:0; min-height: 560px;"
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade">
           </iframe>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-about">
-          <a href="#home" class="navbar-logo" style="color: white; font-size: 1.5rem;">Fjolla <span style="font-weight: 400;">Medika</span></a>
-          <p data-i18n="footer_description">Fjolla Medika — Your trusted dental clinic in North Macedonia.</p>
-        </div>
-
-        <div class="footer-links">
-          <h4 data-i18n="footer_quick_links">Quick Links</h4>
-          <a href="#home" data-i18n="nav_home">Home</a>
-          <a href="#about" data-i18n="nav_about">About</a>
-          <a href="#services" data-i18n="nav_services">Services</a>
-          <a href="gallery.html" data-i18n="nav_gallery">Gallery</a>
-          <a href="team.html" data-i18n="nav_team">Our Team</a>
-          <a href="#appointment" data-i18n="nav_appointment">Appointment</a>
-        </div>
-
-        <div class="footer-contact-info">
-          <h4 data-i18n="footer_contact">Contact Info</h4>
-          <a href="tel:+38971586769" class="footer-contact-link" data-i18n="contact_call_btn">Call Now</a>
-          <a href="mailto:info@fjollamedika.mk" class="footer-contact-link" data-i18n="contact_email_btn">Contact via Email</a>
-        </div>
-
+  <footer class="px-6 pb-12 pt-4 lg:px-8">
+    <div class="mx-auto max-w-7xl rounded-[2rem] border border-slate-200 bg-slate-950 px-8 py-10 text-white">
+      <div class="grid gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.7fr]">
         <div>
-          <h4 data-i18n="footer_follow">Follow Us</h4>
-          <div class="social-links">
-            <a href="https://www.facebook.com/DentalClinicFjollaMedika/" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, '_blank', 'noopener,noreferrer'); return false;" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/fjollamedika/" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, '_blank', 'noopener,noreferrer'); return false;" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/@fjolla_medika?lang=en" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, '_blank', 'noopener,noreferrer'); return false;" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#home" class="inline-flex items-center gap-3 text-lg font-semibold">
+            <svg class="h-8 w-8 text-white" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M32 4C24.5 4 20 8 17.5 12C15 16 14 20 12.5 26C11 32 9 40 12 48C15 56 19 58 22 56C25 54 26 48 28 44C30 40 31 38 32 38C33 38 34 40 36 44C38 48 39 54 42 56C45 58 49 56 52 48C55 40 53 32 51.5 26C50 20 49 16 46.5 12C44 8 39.5 4 32 4Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M22 18C25 16 29 15 32 15C35 15 39 16 42 18" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+            </svg>
+            <span class="font-display">Fjolla <span class="text-white/60">Medika</span></span>
+          </a>
+          <p class="mt-4 max-w-sm text-sm leading-7 text-white/65" data-i18n="footer_description">Fjolla Medika - Your trusted dental clinic in North Macedonia. Quality care for the whole family.</p>
+        </div>
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.22em] text-white/50" data-i18n="footer_quick_links">Quick Links</p>
+          <div class="mt-4 space-y-3 text-sm text-white/75">
+            <a href="#home" class="block transition hover:text-white" data-i18n="nav_home">Home</a>
+            <a href="#about" class="block transition hover:text-white" data-i18n="nav_about">About</a>
+            <a href="#services" class="block transition hover:text-white" data-i18n="nav_services">Services</a>
+            <a href="gallery.html" class="block transition hover:text-white" data-i18n="nav_gallery">Gallery</a>
+            <a href="#team" class="block transition hover:text-white" data-i18n="nav_team">Our Team</a>
+            <a href="#appointment" class="block transition hover:text-white" data-i18n="nav_appointment">Appointment</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.22em] text-white/50" data-i18n="footer_contact">Contact Info</p>
+          <div class="mt-4 space-y-3 text-sm text-white/75">
+            <a href="tel:+38971586769" class="block transition hover:text-white" data-i18n="contact_call_btn">Call Now</a>
+            <a href="mailto:info@fjollamedika.mk" class="block transition hover:text-white" data-i18n="contact_email_btn">Contact via Email</a>
+            <p data-i18n="contact_address">Georgi Pophristov 4-1/8, Skopje, North Macedonia</p>
+          </div>
+        </div>
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.22em] text-white/50" data-i18n="footer_follow">Follow Us</p>
+          <div class="mt-4 flex gap-3">
+            <a href="https://www.facebook.com/DentalClinicFjollaMedika/" target="_blank" rel="noopener noreferrer" class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white/85 transition hover:-translate-y-0.5 hover:bg-white/20 hover:text-white" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/fjollamedika/" target="_blank" rel="noopener noreferrer" class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white/85 transition hover:-translate-y-0.5 hover:bg-white/20 hover:text-white" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@fjolla_medika?lang=en" target="_blank" rel="noopener noreferrer" class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white/85 transition hover:-translate-y-0.5 hover:bg-white/20 hover:text-white" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
           </div>
         </div>
       </div>
 
-      <div class="footer-bottom">
+      <div class="mt-10 border-t border-white/10 pt-6 text-sm text-white/45">
         <p>&copy; 2026 Fjolla Medika. <span data-i18n="footer_rights">All rights reserved.</span></p>
       </div>
     </div>
   </footer>
 
-  <!-- WhatsApp Float -->
   <a href="https://wa.me/38971586769" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
-  <!-- Back to Top -->
   <button class="back-to-top" aria-label="Back to top">
     <i class="fa-solid fa-arrow-up"></i>
   </button>

@@ -8,7 +8,6 @@ const I18n = {
     this.currentLang = saved || 'en';
     await this.loadLanguage(this.currentLang);
     this.updateLangButton();
-    this.bindExternalSocialLinks();
   },
 
   async loadLanguage(lang) {
@@ -65,19 +64,6 @@ const I18n = {
     // Highlight active in dropdown
     document.querySelectorAll('.lang-dropdown button').forEach(b => {
       b.classList.toggle('active', b.dataset.lang === this.currentLang);
-    });
-  },
-
-  bindExternalSocialLinks() {
-    document.querySelectorAll('.social-links a[href^="http"]').forEach(link => {
-      link.setAttribute('target', '_blank');
-      link.setAttribute('rel', 'noopener noreferrer');
-
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const newWindow = window.open(link.href, '_blank', 'noopener,noreferrer');
-        if (newWindow) newWindow.opener = null;
-      });
     });
   }
 };

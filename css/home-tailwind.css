@@ -458,6 +458,111 @@ body {
   display: block;
 }
 
+.comparison-slider {
+  --compare-position: 50%;
+  position: relative;
+  aspect-ratio: 16 / 11;
+  min-height: 18rem;
+  overflow: hidden;
+  background: #f8fafc;
+  touch-action: none;
+  user-select: none;
+}
+
+.comparison-slider.dragging {
+  cursor: ew-resize;
+}
+
+.comparison-media {
+  position: absolute;
+  inset: 0;
+}
+
+.comparison-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  pointer-events: none;
+}
+
+.comparison-media--after {
+  clip-path: inset(0 0 0 var(--compare-position));
+}
+
+.comparison-label {
+  position: absolute;
+  top: 1rem;
+  z-index: 2;
+  border-radius: 9999px;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+.comparison-label--before {
+  left: 1rem;
+  background: rgba(255, 241, 242, 0.9);
+  color: #be123c;
+}
+
+.comparison-label--after {
+  right: 1rem;
+  background: rgba(236, 253, 245, 0.92);
+  color: #047857;
+}
+
+.comparison-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--compare-position);
+  z-index: 3;
+  width: 3rem;
+  transform: translateX(-50%);
+  border: 0;
+  background: transparent;
+  cursor: ew-resize;
+}
+
+.comparison-handle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.08);
+}
+
+.comparison-handle::after {
+  content: "\2194";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 1rem;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+}
+
+.comparison-handle:focus-visible::after {
+  outline: 3px solid rgba(59, 130, 246, 0.35);
+  outline-offset: 3px;
+}
+
 .whatsapp-float,
 .back-to-top {
   position: fixed;

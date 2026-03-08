@@ -83,6 +83,89 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   fadeElements.forEach(el => observer.observe(el));
 
+  // --- Before/After Comparison Sliders ---
+  function initComparisonSliders() {
+    document.querySelectorAll('.comparison-slider').forEach((slider) => {
+      const handle = slider.querySelector('.comparison-handle');
+      if (!handle) return;
+
+      let isDragging = false;
+
+      const setPosition = (value) => {
+        const percent = Math.max(0, Math.min(100, value));
+        slider.style.setProperty('--compare-position', `${percent}%`);
+        handle.setAttribute('aria-valuenow', String(Math.round(percent)));
+      };
+
+      const setPositionFromClientX = (clientX) => {
+        const rect = slider.getBoundingClientRect();
+        const percent = ((clientX - rect.left) / rect.width) * 100;
+        setPosition(percent);
+      };
+
+      const startDragging = (event) => {
+        if (event.pointerType === 'mouse' && event.button !== 0) return;
+        isDragging = true;
+        slider.classList.add('dragging');
+        setPositionFromClientX(event.clientX);
+        if (slider.setPointerCapture) {
+          slider.setPointerCapture(event.pointerId);
+        }
+        event.preventDefault();
+      };
+
+      const stopDragging = (event) => {
+        if (!isDragging) return;
+        isDragging = false;
+        slider.classList.remove('dragging');
+        if (slider.releasePointerCapture && slider.hasPointerCapture?.(event.pointerId)) {
+          slider.releasePointerCapture(event.pointerId);
+        }
+      };
+
+      setPosition(parseFloat(slider.dataset.compareStart || '50'));
+
+      slider.addEventListener('pointerdown', startDragging);
+      slider.addEventListener('pointermove', (event) => {
+        if (!isDragging) return;
+        setPositionFromClientX(event.clientX);
+      });
+      slider.addEventListener('pointerup', stopDragging);
+      slider.addEventListener('pointercancel', stopDragging);
+
+      slider.addEventListener('click', (event) => {
+        if (isDragging) return;
+        setPositionFromClientX(event.clientX);
+      });
+
+      handle.addEventListener('keydown', (event) => {
+        const current = parseFloat(handle.getAttribute('aria-valuenow') || '50');
+
+        if (event.key === 'ArrowLeft') {
+          setPosition(current - 5);
+          event.preventDefault();
+        }
+
+        if (event.key === 'ArrowRight') {
+          setPosition(current + 5);
+          event.preventDefault();
+        }
+
+        if (event.key === 'Home') {
+          setPosition(0);
+          event.preventDefault();
+        }
+
+        if (event.key === 'End') {
+          setPosition(100);
+          event.preventDefault();
+        }
+      });
+    });
+  }
+
+  initComparisonSliders();
+
   // --- Booking Calendar ---
   const BookingCalendar = {
     currentMonth: new Date().getMonth(),

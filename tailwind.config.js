@@ -2,9 +2,6 @@
 module.exports = {
   content: [
     "./index.html",
-    "./appointment.html",
-    "./gallery.html",
-    "./team.html",
     "./admin.html",
     "./js/**/*.js"
   ],

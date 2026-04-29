@@ -170,41 +170,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   const BookingCalendar = {
     currentMonth: new Date().getMonth(),
     currentYear: new Date().getFullYear(),
-    selectedDoctor: null,
+    selectedDoctor: DOCTORS[0] || null,
     selectedDate: null,
     selectedSlot: null,
     unsubscribe: null,          // Firestore listener cleanup
     currentSlotStatus: new Map(), // time -> "pending" | "accepted"
 
     init() {
-      this.renderDoctorGrid();
       this.renderCalendar();
       this.bindEvents();
       this.bindDoctorBookButtons();
       I18n.onChangeCallbacks.push(() => {
-        this.renderDoctorGrid();
         this.renderCalendar();
         if (this.selectedDate) this.renderSlots();
-      });
-    },
-
-    renderDoctorGrid() {
-      const grid = document.getElementById('doctor-select-grid');
-      grid.innerHTML = DOCTORS.map(doc => `
-        <div class="doctor-select-card" data-doctor-id="${doc.id}">
-          <img src="${doc.photo}" alt="${doc.name}">
-          <div class="doctor-select-text">
-            <div class="doctor-select-name">${doc.name}</div>
-            <div class="doctor-select-role" data-i18n="${doc.roleKey}">${I18n.t(doc.roleKey)}</div>
-          </div>
-          <span class="doctor-select-arrow">&#x203A;</span>
-        </div>
-      `).join('');
-
-      grid.querySelectorAll('.doctor-select-card').forEach(card => {
-        card.addEventListener('click', () => {
-          this.selectDoctor(card.dataset.doctorId);
-        });
       });
     },
 
@@ -215,10 +193,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       this.selectedDate = null;
       this.selectedSlot = null;
       this.cleanupListener();
-
-      // Show doctor name in chip
-      const chip = document.getElementById('selected-doctor-chip');
-      chip.textContent = `${doc.name} — ${I18n.t(doc.roleKey)}`;
 
       this.renderCalendar();
       this.showStep('date');
@@ -251,14 +225,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         this.renderCalendar();
       });
 
-      document.getElementById('back-to-doctors').addEventListener('click', () => {
-        this.cleanupListener();
-        this.selectedDoctor = null;
-        this.selectedDate = null;
-        this.selectedSlot = null;
-        this.showStep('doctor');
-      });
-
       document.getElementById('back-to-calendar').addEventListener('click', () => {
         this.cleanupListener();
         this.showStep('date');
@@ -283,6 +249,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         submitBtn.textContent = '...';
 
         try {
+          if (!this.selectedDoctor) this.selectedDoctor = DOCTORS[0] || null;
+          if (!this.selectedDoctor) throw new Error('No booking dentist is configured.');
           const dateStr = this.toFirestoreDateStr(this.selectedDate);
           await submitAppointment(this.selectedDoctor.id, dateStr, this.selectedSlot, name, phone, reason);
 
@@ -292,13 +260,13 @@ document.addEventListener('DOMContentLoaded', async () => {
           const successMsg = document.getElementById('form-success');
           successMsg.classList.add('show');
           form.reset();
-          this.selectedDoctor = null;
+          this.selectedDoctor = DOCTORS[0] || null;
           this.selectedDate = null;
           this.selectedSlot = null;
 
           setTimeout(() => {
             successMsg.classList.remove('show');
-            this.showStep('doctor');
+            this.showStep('date');
             this.renderCalendar();
           }, 5000);
         } catch (err) {
@@ -312,7 +280,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     },
 
     showStep(step) {
-      document.getElementById('booking-step-doctor').classList.toggle('hidden', step !== 'doctor');
       document.getElementById('booking-step-date').classList.toggle('hidden', step !== 'date');
       document.getElementById('booking-step-time').classList.toggle('hidden', step !== 'time');
       document.getElementById('booking-step-form').classList.toggle('hidden', step !== 'form');
@@ -410,6 +377,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       this.cleanupListener();
 
       // Subscribe to real-time slot data for the selected doctor + date
+      if (!this.selectedDoctor) this.selectedDoctor = DOCTORS[0] || null;
+      if (!this.selectedDoctor) return;
       const dateStr = this.toFirestoreDateStr(this.selectedDate);
       this.unsubscribe = subscribeToDateSlots(this.selectedDoctor.id, dateStr, (slotStatus) => {
         this.currentSlotStatus = slotStatus;
@@ -448,7 +417,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const chipEl = document.getElementById('selected-date-chip');
 
       const dateStr = this.formatDate(this.selectedDate);
-      chipEl.textContent = `${this.selectedDoctor.name} — ${dateStr}`;
+      chipEl.textContent = dateStr;
 
       const times = this.getTimeSlots(this.selectedDate);
 
@@ -485,9 +454,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         el.classList.toggle('slot--selected', el.dataset.time === time);
       });
 
-      // Show form with summary (doctor + date + time)
       const chipEl = document.getElementById('selected-datetime-chip');
-      chipEl.textContent = `${this.selectedDoctor.name} — ${this.formatDate(this.selectedDate)} — ${time}`;
+      chipEl.textContent = `${this.formatDate(this.selectedDate)} - ${time}`;
       this.showStep('form');
     },
 

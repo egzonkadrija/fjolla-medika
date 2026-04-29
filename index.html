@@ -41,7 +41,6 @@
         <a href="#home" data-i18n="nav_home">Home</a>
         <a href="#about" data-i18n="nav_about">About</a>
         <a href="#services" data-i18n="nav_services">Services</a>
-        <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
         <a href="#team" data-i18n="nav_team">Our Team</a>
         <a href="#appointment" data-i18n="nav_appointment">Appointment</a>
         <a href="#contact" data-i18n="nav_contact">Contact</a>
@@ -124,8 +123,8 @@
                   </div>
                   <div class="mt-4 grid gap-3 sm:grid-cols-2">
                     <div class="rounded-2xl bg-white px-4 py-3 shadow-[0_12px_30px_rgba(59,130,246,0.12)]">
-                      <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400" data-i18n="booking_select_doctor">Select a Dentist</p>
-                      <p class="mt-1 text-sm font-semibold">Dr. Arben Selimi</p>
+                      <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400" data-i18n="booking_select_date">Select a Date</p>
+                      <p class="mt-1 text-sm font-semibold">Same-week visits</p>
                     </div>
                     <div class="rounded-2xl bg-slate-950 px-4 py-3 text-white">
                       <p class="text-[11px] uppercase tracking-[0.18em] text-white/45" data-i18n="booking_select_time">Select a Time</p>
@@ -451,15 +450,8 @@
         </div>
 
         <div class="booking-wrapper fade-in rounded-[2rem] border border-slate-200 bg-white/90 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:p-8">
-          <div class="booking-step" id="booking-step-doctor">
-            <h3 class="booking-step-title text-center font-display text-[1.45rem] font-semibold text-slate-950" data-i18n="booking_select_doctor">Select a Dentist</h3>
-            <p class="booking-step-subtitle mt-2 text-center text-[0.95rem] text-slate-500" data-i18n="booking_select_doctor_sub">Choose your preferred dentist to continue</p>
-            <div class="doctor-select-grid" id="doctor-select-grid"></div>
-          </div>
-
-          <div class="booking-step hidden" id="booking-step-date">
+          <div class="booking-step" id="booking-step-date">
             <h3 class="booking-step-title text-center font-display text-[1.35rem] font-semibold text-slate-950" data-i18n="booking_select_date">Select a Date</h3>
-            <div class="booking-summary-chip" id="selected-doctor-chip"></div>
             <div class="booking-calendar">
               <div class="cal-header">
                 <button class="cal-nav" id="cal-prev" aria-label="Previous month">&#x2039;</button>
@@ -473,7 +465,6 @@
               <span class="legend-item"><span class="legend-dot legend-available"></span> <span data-i18n="booking_available">Available</span></span>
               <span class="legend-item"><span class="legend-dot legend-closed"></span> <span data-i18n="booking_sun_closed">Closed on Sundays</span></span>
             </div>
-            <button class="booking-back-btn" id="back-to-doctors">&#x2039; <span data-i18n="booking_select_doctor">Select a Dentist</span></button>
           </div>
 
           <div class="booking-step hidden" id="booking-step-time">
